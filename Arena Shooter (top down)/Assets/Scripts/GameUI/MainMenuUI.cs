@@ -3,9 +3,9 @@ using UnityEditor;
 using UnityEngine;
 using Zenject;
 
-public class MainMenu : MonoBehaviour
+public class MainMenuUI : MonoBehaviour
 {
-    [SerializeField] private const string _nameNextScene = "Shop";
+    [SerializeField] private const string _nameShopScene = "Shop";
 
     private ISceneLoader _sceneLoader;
 
@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        _sceneLoader.LoadScene(_nameNextScene, null);
+        _sceneLoader.LoadScene(_nameShopScene, null);
     }
 
     public void Settings()
