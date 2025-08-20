@@ -10,11 +10,6 @@ namespace Assets.Scripts.UI.Curtain
         [SerializeField] private const float _timeForStep = 0.01f;
         [SerializeField] private const float _alphaStep = 0.05f;
 
-        private void Start()
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-
         public void Show()
         {
             gameObject.SetActive(true);

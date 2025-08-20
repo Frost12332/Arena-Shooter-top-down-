@@ -2,6 +2,7 @@ using Assets.Scripts.UI.Curtain;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace Assets.Scripts.Infrastructure.SceneLoad
 {
@@ -9,13 +10,14 @@ namespace Assets.Scripts.Infrastructure.SceneLoad
 
     public class SceneLoader : MonoBehaviour, ISceneLoader
     {
-        [SerializeField] private Curtain _curtain;
+        private ICurtain _curtain;
 
         private const float _waitingSeconds = 0.5f;
 
-        void Start()
+        [Inject]
+        private void Construct(ICurtain curtain)
         {
-            DontDestroyOnLoad(gameObject);
+            _curtain = curtain;
         }
 
         public void LoadScene(string sceneName, SceneHasBeenLoaded sceneHasBeenLoaded)
@@ -36,7 +38,7 @@ namespace Assets.Scripts.Infrastructure.SceneLoad
 
             _curtain.Hide();
 
-            sceneHasBeenLoaded.Invoke();
+            sceneHasBeenLoaded?.Invoke();
 
             yield return new WaitForSeconds(_waitingSeconds);
         }
