@@ -1,16 +1,18 @@
 using UnityEngine;
+using Zenject;
 
 public class GameBootstrapper : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    //private IPauseMenuUI _pauseMenuUI;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //[Inject]
+    //private void Construct(IPauseMenuUI pauseMenuUI)
+    //{
+    //    _pauseMenuUI = pauseMenuUI;
+    //}
+
+    //private void Start()
+    //{
+    //    _pauseMenuUI.HidePauseMenu();
+    //}
 }

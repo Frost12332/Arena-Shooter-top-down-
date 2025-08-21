@@ -2,7 +2,7 @@ using Assets.Scripts.Infrastructure.SceneLoad;
 using UnityEngine;
 using Zenject;
 
-public class ShopUI : MonoBehaviour
+public class ShopUI : MonoBehaviour, IShopUI
 {
     [SerializeField] private const string _namePlayScene = "Game";
     [SerializeField] private const string _nameMenuScene = "Menu";

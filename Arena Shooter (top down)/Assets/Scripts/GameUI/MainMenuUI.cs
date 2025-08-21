@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using Zenject;
 
-public class MainMenuUI : MonoBehaviour
+public class MainMenuUI : MonoBehaviour, IMainMenuUI
 {
     [SerializeField] private const string _nameShopScene = "Shop";
 

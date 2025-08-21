@@ -7,7 +7,7 @@ namespace Assets.Scripts.UI.Curtain
     {
         [SerializeField] private CanvasGroup _curtainUI;
 
-        [SerializeField] private const float _timeForStep = 0.01f;
+        [SerializeField] private const float _timeForStep = 0.03f;
         [SerializeField] private const float _alphaStep = 0.05f;
 
         public void Show()
