@@ -1,18 +1,21 @@
 using UnityEngine;
 using Zenject;
 
-public class GameBootstrapper : MonoBehaviour
+namespace Assets.Scripts.Infrastructure.Bootstrappers
 {
-    //private IPauseMenuUI _pauseMenuUI;
+    public class GameBootstrapper : MonoBehaviour
+    {
+        //private IPauseMenuUI _pauseMenuUI;
 
-    //[Inject]
-    //private void Construct(IPauseMenuUI pauseMenuUI)
-    //{
-    //    _pauseMenuUI = pauseMenuUI;
-    //}
+        //[Inject]
+        //private void Construct(IPauseMenuUI pauseMenuUI)
+        //{
+        //    _pauseMenuUI = pauseMenuUI;
+        //}
 
-    //private void Start()
-    //{
-    //    _pauseMenuUI.HidePauseMenu();
-    //}
+        //private void Start()
+        //{
+        //    _pauseMenuUI.HidePauseMenu();
+        //}
+    }
 }

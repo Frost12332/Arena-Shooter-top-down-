@@ -1,6 +1,9 @@
-﻿public interface IShopUI
+﻿namespace Assets.Scripts.GameUI
 {
-    void MainMenu();
-    void PlayGame();
-    void Settings();
+    public interface IShopUI
+    {
+        void MainMenu();
+        void PlayGame();
+        void Settings();
+    }
 }

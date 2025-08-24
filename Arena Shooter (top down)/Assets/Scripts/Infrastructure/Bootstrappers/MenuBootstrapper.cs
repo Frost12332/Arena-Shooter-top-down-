@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class MenuBootstrapper : MonoBehaviour
+namespace Assets.Scripts.Infrastructure.Bootstrappers
 {
-    
+    public class MenuBootstrapper : MonoBehaviour
+    {
+
+    }
 }

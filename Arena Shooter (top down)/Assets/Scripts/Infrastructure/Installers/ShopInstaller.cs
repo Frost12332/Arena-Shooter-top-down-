@@ -1,12 +1,16 @@
+using Assets.Scripts.GameUI;
 using UnityEngine;
 using Zenject;
 
-public class ShopInstaller : MonoInstaller
+namespace Assets.Scripts.Infrastructure.Installers
 {
-    [SerializeField] private GameObject _shopUIPrefab;
-
-    public override void InstallBindings()
+    public class ShopInstaller : MonoInstaller
     {
-        Container.Bind<IShopUI>().To<ShopUI>().FromComponentInNewPrefab(_shopUIPrefab).AsSingle().NonLazy();
+        [SerializeField] private GameObject _shopUIPrefab;
+
+        public override void InstallBindings()
+        {
+            Container.Bind<IShopUI>().To<ShopUI>().FromComponentInNewPrefab(_shopUIPrefab).AsSingle().NonLazy();
+        }
     }
 }

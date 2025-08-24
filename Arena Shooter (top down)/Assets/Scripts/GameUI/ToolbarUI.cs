@@ -1,18 +1,21 @@
 using UnityEngine;
 using Zenject;
 
-public class ToolbarUI : MonoBehaviour, IToolbarUI
+namespace Assets.Scripts.GameUI
 {
-    private IPauseMenuUI _pauseMenuUI;
-
-    [Inject]
-    private void Construct(IPauseMenuUI pauseMenuUI)
+    public class ToolbarUI : MonoBehaviour, IToolbarUI
     {
-        _pauseMenuUI = pauseMenuUI;
-    }
+        private IPauseMenuUI _pauseMenuUI;
 
-    public void Pause()
-    {
-        _pauseMenuUI.ShowPauseMenu();
+        [Inject]
+        private void Construct(IPauseMenuUI pauseMenuUI)
+        {
+            _pauseMenuUI = pauseMenuUI;
+        }
+
+        public void Pause()
+        {
+            _pauseMenuUI.ShowPauseMenu();
+        }
     }
 }

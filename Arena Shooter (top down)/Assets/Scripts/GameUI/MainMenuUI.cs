@@ -3,34 +3,37 @@ using UnityEditor;
 using UnityEngine;
 using Zenject;
 
-public class MainMenuUI : MonoBehaviour, IMainMenuUI
+namespace Assets.Scripts.GameUI
 {
-    [SerializeField] private const string _nameShopScene = "Shop";
-
-    private ISceneLoader _sceneLoader;
-
-    [Inject]
-    private void Construct(ISceneLoader sceneLoader)
+    public class MainMenuUI : MonoBehaviour, IMainMenuUI
     {
-        _sceneLoader = sceneLoader;
-    }
+        [SerializeField] private const string _nameShopScene = "Shop";
 
-    public void StartGame()
-    {
-        _sceneLoader.LoadScene(_nameShopScene, null);
-    }
+        private ISceneLoader _sceneLoader;
 
-    public void Settings()
-    {
-        Debug.LogError("Need implementation SettingsPannel");
-    }
+        [Inject]
+        private void Construct(ISceneLoader sceneLoader)
+        {
+            _sceneLoader = sceneLoader;
+        }
 
-    public void Exit()
-    {
+        public void StartGame()
+        {
+            _sceneLoader.LoadScene(_nameShopScene, null);
+        }
+
+        public void Settings()
+        {
+            Debug.LogError("Need implementation SettingsPannel");
+        }
+
+        public void Exit()
+        {
 #if UNITY_EDITOR
-        EditorApplication.ExitPlaymode();
+            EditorApplication.ExitPlaymode();
 #else
         Application.Quit();
 #endif
+        }
     }
 }

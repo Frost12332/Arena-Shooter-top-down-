@@ -1,12 +1,16 @@
+using Assets.Scripts.GameUI;
 using UnityEngine;
 using Zenject;
 
-public class MainMenuInstaller : MonoInstaller
+namespace Assets.Scripts.Infrastructure.Installers
 {
-    [SerializeField] private GameObject _mainMenuUIPrefab;
-
-    public override void InstallBindings()
+    public class MainMenuInstaller : MonoInstaller
     {
-        Container.Bind<IMainMenuUI>().To<MainMenuUI>().FromComponentInNewPrefab(_mainMenuUIPrefab).AsSingle().NonLazy();
+        [SerializeField] private GameObject _mainMenuUIPrefab;
+
+        public override void InstallBindings()
+        {
+            Container.Bind<IMainMenuUI>().To<MainMenuUI>().FromComponentInNewPrefab(_mainMenuUIPrefab).AsSingle().NonLazy();
+        }
     }
 }

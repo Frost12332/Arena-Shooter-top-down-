@@ -1,8 +1,11 @@
-﻿public interface IPauseMenuUI
+﻿namespace Assets.Scripts.GameUI
 {
-    void Continue();
-    void EndBattle();
-    void HidePauseMenu();
-    void Settings();
-    void ShowPauseMenu();
+    public interface IPauseMenuUI
+    {
+        void Continue();
+        void EndBattle();
+        void HidePauseMenu();
+        void Settings();
+        void ShowPauseMenu();
+    }
 }

@@ -1,18 +1,21 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+namespace Assets.Scripts.GameLogic
 {
-    [SerializeField] private float _lifeTime = 3f;
-
-    private void Start()
+    public class Bullet : MonoBehaviour
     {
-        Destroy(gameObject, _lifeTime);
-    }
+        [SerializeField] private float _lifeTime = 3f;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        // тут можно добавить урон монстрам
-        Destroy(gameObject);
-    }
+        private void Start()
+        {
+            Destroy(gameObject, _lifeTime);
+        }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            // тут можно добавить урон монстрам
+            Destroy(gameObject);
+        }
+
+    }
 }

@@ -1,4 +1,7 @@
-﻿public interface IToolbarUI
+﻿namespace Assets.Scripts.GameUI
 {
-    void Pause();
+    public interface IToolbarUI
+    {
+        void Pause();
+    }
 }

@@ -1,51 +1,65 @@
-
 using UnityEngine;
+using Zenject;
 
-public class PlayerController : MonoBehaviour
+namespace Assets.Scripts.GameLogic
 {
-    [SerializeField] private CharacterController _characterController;
-    [SerializeField] private Camera _playerCamera;
-
-    [SerializeField] private float _moveSpeed = 5f;
-    [SerializeField] private float _rotationSpeed = 20f;
-
-    private Vector3 _moveInput;
-
-    void Start()
+    public class PlayerController : MonoBehaviour, IPlayerController
     {
+        [SerializeField] private CharacterController _characterController;
+        [SerializeField] private Camera _playerCamera;
 
-    }
+        [SerializeField] private float _moveSpeed = 5f;
+        [SerializeField] private float _rotationSpeed = 20f;
 
-    void Update()
-    {
-        // 1. —читываем ввод
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        _moveInput.x = h;
-        _moveInput.y = 0;
-        _moveInput.z = v;
+        private Vector3 _moveInput;
 
-        _moveInput.Normalize();
-
-        _characterController.Move(_moveInput * _moveSpeed * Time.deltaTime);
-
-        RotateToMouse();
-    }
-
-    void RotateToMouse()
-    {
-        Ray ray = _playerCamera.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100f, LayerMask.GetMask("Ground"))) // важно исключить игрока!
+        [Inject]
+        private void Construct(ICameraScript cameraScript)
         {
-            Vector3 lookPoint = hitInfo.point;
-            Vector3 direction = (lookPoint - transform.position);
-            direction.y = 0;
+            _playerCamera = cameraScript.GetCamera();
+        }
 
-            if (direction.sqrMagnitude > 0.001f)
+        void Start()
+        {
+
+        }
+
+        void Update()
+        {
+            // 1. —читываем ввод
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input.GetAxisRaw("Vertical");
+            _moveInput.x = h;
+            _moveInput.y = 0;
+            _moveInput.z = v;
+
+            _moveInput.Normalize();
+
+            _characterController.Move(_moveInput * _moveSpeed * Time.deltaTime);
+
+            RotateToMouse();
+        }
+
+        public GameObject GetPlayerCharacter()
+        {
+            return gameObject;
+        }
+
+        void RotateToMouse()
+        {
+            Ray ray = _playerCamera.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, 100f, LayerMask.GetMask("Ground"))) // важно исключить игрока!
             {
-                Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+                Vector3 lookPoint = hitInfo.point;
+                Vector3 direction = lookPoint - transform.position;
+                direction.y = 0;
+
+                if (direction.sqrMagnitude > 0.001f)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(direction);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+                }
             }
         }
     }

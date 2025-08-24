@@ -1,6 +1,9 @@
-﻿public interface IMainMenuUI
+﻿namespace Assets.Scripts.GameUI
 {
-    void Exit();
-    void Settings();
-    void StartGame();
+    public interface IMainMenuUI
+    {
+        void Exit();
+        void Settings();
+        void StartGame();
+    }
 }
