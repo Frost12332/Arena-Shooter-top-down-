@@ -26,7 +26,6 @@ namespace Assets.Scripts.GameLogic
 
         void Update()
         {
-            // 1. —читываем ввод
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
             _moveInput.x = h;
@@ -49,7 +48,7 @@ namespace Assets.Scripts.GameLogic
         {
             Ray ray = _playerCamera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, 100f, LayerMask.GetMask("Ground"))) // важно исключить игрока!
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, 100f, LayerMask.GetMask("Ground")))
             {
                 Vector3 lookPoint = hitInfo.point;
                 Vector3 direction = lookPoint - transform.position;

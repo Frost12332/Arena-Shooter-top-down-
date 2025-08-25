@@ -147,8 +147,8 @@ Transform:
   m_GameObject: {fileID: 53633919}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710707, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: 1.0000834, y: 1, z: 100}
-  m_LocalScale: {x: 1, y: 2, z: 250}
+  m_LocalPosition: {x: 1, y: 1, z: 400}
+  m_LocalScale: {x: 1, y: 2, z: 1000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 957834759}
@@ -255,8 +255,8 @@ Transform:
   m_GameObject: {fileID: 165582095}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 99, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 250}
+  m_LocalPosition: {x: 400, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 1000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 957834759}
@@ -757,7 +757,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 25, y: 25, z: 25}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 957834759}
@@ -865,8 +865,8 @@ Transform:
   m_GameObject: {fileID: 614210412}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -99, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 250}
+  m_LocalPosition: {x: -400, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 1000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 957834759}
@@ -1024,7 +1024,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toolbarUIPrefab: {fileID: 9098328445226961802, guid: 19422f54f45fc4941b6c00b1165b5acc, type: 3}
   _pauseMenuUIPrefab: {fileID: 4738524861932067437, guid: c8ca5ba2b785f484fb393dcbd749ee7a, type: 3}
+  _waveControllerPrefab: {fileID: 307066248455459392, guid: bfb2804fe5eccc341bfbaea8417dc393, type: 3}
   _gameConfig: {fileID: 11400000, guid: 4b70b3b787e8bdf409375f77f5205168, type: 2}
+  _spawnerConfig: {fileID: 11400000, guid: d6a0f9ba96558054f887df304acf2b55, type: 2}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,8 +1217,8 @@ Transform:
   m_GameObject: {fileID: 1211933491}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710707, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: 0.99991655, y: 1, z: -100}
-  m_LocalScale: {x: 1, y: 2, z: 250}
+  m_LocalPosition: {x: 1, y: 1, z: -400}
+  m_LocalScale: {x: 1, y: 2, z: 1000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 957834759}

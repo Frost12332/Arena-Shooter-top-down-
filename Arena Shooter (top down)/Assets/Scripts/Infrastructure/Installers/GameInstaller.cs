@@ -11,7 +11,10 @@ namespace Assets.Scripts.Infrastructure.Installers
         [SerializeField] private GameObject _toolbarUIPrefab;
         [SerializeField] private GameObject _pauseMenuUIPrefab;
 
+        [SerializeField] private GameObject _waveControllerPrefab;
+
         [SerializeField] private GameConfig _gameConfig;
+        [SerializeField] private SpawnerConfig _spawnerConfig;
 
         public override void InstallBindings()
         {
@@ -20,6 +23,14 @@ namespace Assets.Scripts.Infrastructure.Installers
 
             Container.Bind<ICameraScript>().To<CameraScript>().FromComponentInNewPrefab(_gameConfig.gameCameraPrefab).AsSingle();
             Container.Bind<IPlayerController>().To<PlayerController>().FromComponentInNewPrefab(_gameConfig.playerCharacterPrefab).AsSingle();
+
+            Container.Bind<SpawnerConfig>().FromInstance(_spawnerConfig).AsSingle();
+
+            Container.Bind<IEnemySpawner>().To<EnemySpawner>().AsSingle();
+
+            Container.Bind<WaveController>().FromComponentInNewPrefab(_waveControllerPrefab).AsSingle().NonLazy();
+
+
         }
     }
 }
