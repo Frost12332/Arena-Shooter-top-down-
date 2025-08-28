@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.GameLogic.Enemy
 {
-    public class EnemyMageAnimator : MonoBehaviour
+    public class EnemyMageAnimator : MonoBehaviour, IEnemyAnimator
     {
         private const float _stopSpeed = 0.0f;
 
@@ -21,7 +21,7 @@ namespace Assets.Scripts.GameLogic.Enemy
             _animator.SetFloat(Speed, speed);
         }
 
-        public void PlayStop()
+        public void PlayStopMove()
         {
             _animator.SetFloat(Speed, _stopSpeed);
         }

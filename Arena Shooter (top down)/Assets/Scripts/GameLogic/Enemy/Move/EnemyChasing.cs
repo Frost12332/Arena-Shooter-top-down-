@@ -2,9 +2,9 @@
 using UnityEngine.AI;
 using Zenject;
 
-namespace Assets.Scripts.GameLogic.Enemy
+namespace Assets.Scripts.GameLogic.Enemy.Move
 {
-    public class EnemyMove : MonoBehaviour
+    public class EnemyChasing : MonoBehaviour
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
 
