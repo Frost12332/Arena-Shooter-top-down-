@@ -1,3 +1,4 @@
+using Assets.Scripts.Config;
 using Assets.Scripts.Infrastructure.SceneLoad;
 using Assets.Scripts.UI.Curtain;
 using UnityEngine;
@@ -9,6 +10,8 @@ namespace Assets.Scripts.Infrastructure.Installers
     {
         [SerializeField] private GameObject _sceneLoaderPrefab;
         [SerializeField] private GameObject _curtainPrefab;
+
+        
 
 
         public override void InstallBindings()

@@ -1,4 +1,5 @@
 using Assets.Scripts.Config;
+using Assets.Scripts.Infrastructure.ObjectPool;
 using UnityEngine;
 using Zenject;
 
@@ -11,11 +12,17 @@ namespace Assets.Scripts.GameLogic
         private readonly GameObject _playerCharacter;
         private int _currentEnemyCount = 0;
 
-        public EnemySpawner(SpawnerConfig spawnConfig, DiContainer container, IPlayerController playerController)
+        private PoolObjectCollection _poolObjectCollection;
+        IGameObjectPool _gameObjectPool;
+
+        public EnemySpawner(SpawnerConfig spawnConfig, DiContainer container, IPlayerController playerController,
+            PoolObjectCollection poolObjectCollection, IGameObjectPool gameObjectPool)
         {
             _spawnConfig = spawnConfig;
             _container = container;
             _playerCharacter = playerController.GetPlayerCharacter();
+            _poolObjectCollection = poolObjectCollection;
+            _gameObjectPool = gameObjectPool;
         }
 
         public void SpawnWave(int waveSize)
@@ -62,9 +69,11 @@ namespace Assets.Scripts.GameLogic
 
         private void SpawnEnemy(Vector3 position)
         {
-            GameObject enemyPrefab = GetRandomEnemy();
+            PoolObjectTemplate enemyObject = GetRandomEnemy();
 
-            GameObject enemyInstance = _container.InstantiatePrefab(enemyPrefab, position, Quaternion.identity, null);
+            GameObject enemyInstance = _gameObjectPool.GetObject(enemyObject.Id);
+
+            enemyInstance.transform.position = position;
 
             enemyInstance.transform.Rotate(0, Random.Range(0, 360), 0);
         }
@@ -74,9 +83,10 @@ namespace Assets.Scripts.GameLogic
             _currentEnemyCount--;
         }
 
-        private GameObject GetRandomEnemy()
+        private PoolObjectTemplate GetRandomEnemy()
         {
-            return _spawnConfig.enemyCharacterPrefabs[Random.Range(0, _spawnConfig.enemyCharacterPrefabs.Count - 1)];
+            int random_value = Random.Range(0, _poolObjectCollection.PoolCollection.Count - 1);
+            return _poolObjectCollection.PoolCollection[random_value];
         }
     }
 }

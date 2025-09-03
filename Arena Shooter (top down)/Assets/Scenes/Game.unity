@@ -247,6 +247,10 @@ PrefabInstance:
       propertyPath: _pointForSpawn
       value: 
       objectReference: {fileID: 2071267331}
+    - target: {fileID: 7498038951615621818, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
+      propertyPath: _poolObjectTemplate
+      value: 
+      objectReference: {fileID: 11400000, guid: a68b9c87fc030bb4bb0c9e6564ccb239, type: 2}
     - target: {fileID: 7909918009021062444, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
       propertyPath: _spellAtackPrefab
       value: 
@@ -1179,6 +1183,7 @@ MonoBehaviour:
   _waveControllerPrefab: {fileID: 307066248455459392, guid: bfb2804fe5eccc341bfbaea8417dc393, type: 3}
   _gameConfig: {fileID: 11400000, guid: 4b70b3b787e8bdf409375f77f5205168, type: 2}
   _spawnerConfig: {fileID: 11400000, guid: d6a0f9ba96558054f887df304acf2b55, type: 2}
+  _poolObjectCollection: {fileID: 11400000, guid: ae8b127160831474b8051bff2b17724b, type: 2}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

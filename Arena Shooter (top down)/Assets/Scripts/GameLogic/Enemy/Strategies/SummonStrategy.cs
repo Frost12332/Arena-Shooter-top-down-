@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Config;
+using Assets.Scripts.Infrastructure.ObjectPool;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 namespace Assets.Scripts.GameLogic.Enemy
 {
@@ -11,9 +14,18 @@ namespace Assets.Scripts.GameLogic.Enemy
         [SerializeField] private EnemyGroup _enemyGroup;
 
         [SerializeField] private GameObject _spawnEnemyVFX;
-        [SerializeField] private GameObject _enemyPrefab;
+
+        [SerializeField] private PoolObjectTemplate _poolObjectTemplate;
+        private IGameObjectPool _poolObjectPool;
 
         public int countSummonEnemy = 5;
+
+
+        [Inject]
+        private void Construct(IGameObjectPool pool)
+        {
+            _poolObjectPool = pool;
+        }
 
 
         public override bool CanExecute()
@@ -40,7 +52,10 @@ namespace Assets.Scripts.GameLogic.Enemy
 
             foreach (Vector3 spawnPoint in spawnPoints)
             {
-                GameObject spawnedEnemy = Instantiate(_enemyPrefab, spawnPoint, Quaternion.identity, null);
+                GameObject spawnedEnemy = _poolObjectPool.GetObject(_poolObjectTemplate.Id);
+                spawnedEnemy.transform.position = spawnPoint;
+
+                //Instantiate(_enemyPrefab, spawnPoint, Quaternion.identity, null);
 
                 spawnedEnemy.GetComponent<NavMeshAgent>().Warp(spawnPoint);
 
