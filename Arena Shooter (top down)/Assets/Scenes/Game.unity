@@ -235,9 +235,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7498038951615621818, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
+      propertyPath: _enemyGroup
+      value: 
+      objectReference: {fileID: 1307995521}
+    - target: {fileID: 7498038951615621818, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
+      propertyPath: _enemyPrefab
+      value: 
+      objectReference: {fileID: 1428624293564481279, guid: 7331f05fbb1f1dd41aefdeb98137a879, type: 3}
+    - target: {fileID: 7498038951615621818, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
+      propertyPath: _pointForSpawn
+      value: 
+      objectReference: {fileID: 2071267331}
+    - target: {fileID: 7909918009021062444, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
+      propertyPath: _spellAtackPrefab
+      value: 
+      objectReference: {fileID: 3944521391401607446, guid: ef8935f24913edb408cb477bcc2fbc57, type: 3}
+    - target: {fileID: 7909918009021062444, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
+      propertyPath: _spellAtackStartPosition
+      value: 
+      objectReference: {fileID: 1831714847}
     - target: {fileID: 8538367609590355981, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.60193
+      value: 24.5
       objectReference: {fileID: 0}
     - target: {fileID: 8538367609590355981, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -279,10 +299,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton_Mage
       objectReference: {fileID: 0}
+    - target: {fileID: 9184608041044912550, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
+      propertyPath: _healVFX
+      value: 
+      objectReference: {fileID: 339158821923109191, guid: 108ca465382c11742bd2c91fe4fdb13f, type: 3}
+    - target: {fileID: 9184608041044912550, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
+      propertyPath: _enemyGroup
+      value: 
+      objectReference: {fileID: 1307995521}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8538367609590355981, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1831714847}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9022311727758688951, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1307995521}
   m_SourcePrefab: {fileID: 100100000, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
 --- !u!1 &165582095
 GameObject:
@@ -1088,7 +1122,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727758235}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
   m_Name: 
@@ -1612,6 +1646,65 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bb9748b44fa67345b9b0f3d1b4e0d12, type: 3}
+--- !u!1 &1307995509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9022311727758688951, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
+  m_PrefabInstance: {fileID: 146428686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1307995521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307995509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7fb90950b441d489c7831192afb210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemies: []
+--- !u!4 &1307995532 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8538367609590355981, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
+  m_PrefabInstance: {fileID: 146428686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1831714846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1831714847}
+  m_Layer: 11
+  m_Name: SpellCastPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1831714847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831714846}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.79, z: 1.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1307995532}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2071267331 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8933028626661220741, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}
+  m_PrefabInstance: {fileID: 146428686}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

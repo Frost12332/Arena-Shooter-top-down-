@@ -9,4 +9,5 @@ namespace Assets.Scripts.Config
 
         public GameObject playerCharacterPrefab;
     }
+
 }
