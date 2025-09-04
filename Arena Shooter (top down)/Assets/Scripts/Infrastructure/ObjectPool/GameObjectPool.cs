@@ -2,7 +2,6 @@ using Assets.Scripts.Config;
 using Assets.Scripts.Infrastructure.Factory;
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 namespace Assets.Scripts.Infrastructure.ObjectPool
 {
@@ -10,22 +9,22 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
     {
         private IGameFactory _factory;
 
-        private Dictionary<string, Stack<GameObject>> _freeUseObjects;
+        private Dictionary<string, Stack<Poolable>> _freeUseObjects;
 
         public GameObjectPool(IGameFactory factory, PoolObjectCollection poolObjectCollection)
         {
             _factory = factory;
-            _freeUseObjects = new Dictionary<string, Stack<GameObject>>();
+            _freeUseObjects = new Dictionary<string, Stack<Poolable>>();
 
             foreach (PoolObjectTemplate poolObject in poolObjectCollection.PoolCollection)
             {
-                _freeUseObjects.Add(poolObject.Id, new Stack<GameObject>());
+                _freeUseObjects.Add(poolObject.Id, new Stack<Poolable>());
             }
         }
 
-        public GameObject GetObject(string id)
+        public Poolable GetObject(string id)
         {
-            if (_freeUseObjects.TryGetValue(id, out Stack<GameObject> stack))
+            if (_freeUseObjects.TryGetValue(id, out Stack<Poolable> stack))
             {
                 if (stack.Count > 0)
                     return stack.Pop();
@@ -44,7 +43,7 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
 
         private void RequestNewObject(string id)
         {
-            GameObject createdObject = _factory.CreateObject(id);
+            Poolable createdObject = _factory.CreateObject(id);
 
             if (createdObject != null)
             {
@@ -54,14 +53,14 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
         }
     
         
-        public void ReleaseObject(string id, GameObject gameObject)
+        public void ReleaseObject(string id, Poolable poolObject)
         {
             if (_freeUseObjects.ContainsKey(id))
             {
-                _freeUseObjects[id].Push(gameObject);
+                _freeUseObjects[id].Push(poolObject);
             }
             else
-                Debug.LogError("Find unreleasable GameObject:" + gameObject.name + " id:" + id);
+                Debug.LogError("Find unreleasable GameObject:" + poolObject.name + " id:" + id);
         }    
     }
 }

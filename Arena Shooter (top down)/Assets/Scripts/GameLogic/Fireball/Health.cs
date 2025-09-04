@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Infrastructure.ObjectPool;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.GameLogic.FireballBehaviour

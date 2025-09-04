@@ -3,9 +3,10 @@ using Zenject;
 
 namespace Assets.Scripts.Infrastructure.ObjectPool
 {
-    public class Poolable : MonoBehaviour
+    public abstract class Poolable : MonoBehaviour
     {
         private string _id;
+
         private IReleasable _releasable;
         private IGameObjectPool _gameObjectPool;
 
@@ -15,27 +16,35 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
             _gameObjectPool = gameObjectPool;
         }
 
-        private void Start()
+        private void Awake()
         {
             _releasable = GetComponent<IReleasable>();
+        }
+
+        private void OnEnable()
+        {
             _releasable.OnReleased += ReleasableEvent;
         }
 
 
-        public void SetId(string id) => _id = id;
+        public void Initialize(string id) => _id = id;
 
         private void ReleasableEvent()
         {
-            gameObject.SetActive(false);
+            Deactivate();
 
-            _gameObjectPool.ReleaseObject(_id, gameObject);
+            _gameObjectPool.ReleaseObject(_id, this);
         }
 
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             _releasable.OnReleased -= ReleasableEvent;
         }
+
+        public abstract void Activate(Vector3 activationPosition);
+
+        protected abstract void Deactivate();
 
 
 

@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Infrastructure.ObjectPool;
+using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Factory
 {
     public interface IGameFactory
     {
-        GameObject CreateObject(string id);
+        Poolable CreateObject(string id);
     }
 }

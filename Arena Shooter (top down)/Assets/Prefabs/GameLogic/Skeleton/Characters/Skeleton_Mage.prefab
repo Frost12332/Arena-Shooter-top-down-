@@ -191,10 +191,10 @@ PrefabInstance:
       addedObject: {fileID: 2485758662701258321}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6441850061666961031}
+      addedObject: {fileID: 4789530085685029897}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4789530085685029897}
+      addedObject: {fileID: 5621580547834283574}
   m_SourcePrefab: {fileID: 100100000, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
 --- !u!4 &7220459855728282504 stripped
 Transform:
@@ -342,7 +342,7 @@ MonoBehaviour:
   _pointForSpawn: {fileID: 8933028626661220741}
   _enemyGroup: {fileID: 0}
   _spawnEnemyVFX: {fileID: 4472197100597932846, guid: aac01fdb15776864b87f9f4fedc97781, type: 3}
-  _poolObjectTemplate: {fileID: 0}
+  _poolObjectTemplate: {fileID: 11400000, guid: a68b9c87fc030bb4bb0c9e6564ccb239, type: 2}
   countSummonEnemy: 5
 --- !u!114 &9184608041044912550
 MonoBehaviour:
@@ -371,18 +371,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: -2372660290314446523}
---- !u!114 &6441850061666961031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9022311727758688951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1cad7ac412378041bc42de52d602360, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4789530085685029897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,3 +385,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthPoints: 100
   _maxHealthPoints: 100
+--- !u!114 &5621580547834283574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022311727758688951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205f0c8188249164f861eb754b8251bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: -2372660290314446523}

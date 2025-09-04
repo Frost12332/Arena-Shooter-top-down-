@@ -38,7 +38,6 @@ namespace Assets.Scripts.GameLogic
                     }
                 }
             }
-
         }
 
         public bool TryFindValidSpawnPoint(out Vector3 spawnPoint)
@@ -71,11 +70,14 @@ namespace Assets.Scripts.GameLogic
         {
             PoolObjectTemplate enemyObject = GetRandomEnemy();
 
-            GameObject enemyInstance = _gameObjectPool.GetObject(enemyObject.Id);
+            Poolable enemyInstance = _gameObjectPool.GetObject(enemyObject.Id);
 
-            enemyInstance.transform.position = position;
+            enemyInstance.Activate(position);
 
-            enemyInstance.transform.Rotate(0, Random.Range(0, 360), 0);
+            //enemyInstance.transform.position = position;
+
+            //enemyInstance.transform.Rotate(0, Random.Range(0, 360), 0);
+
         }
 
         public void OnEnemyDied()

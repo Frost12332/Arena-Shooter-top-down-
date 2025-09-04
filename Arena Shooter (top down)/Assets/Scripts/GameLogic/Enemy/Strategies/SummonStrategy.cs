@@ -52,14 +52,15 @@ namespace Assets.Scripts.GameLogic.Enemy
 
             foreach (Vector3 spawnPoint in spawnPoints)
             {
-                GameObject spawnedEnemy = _poolObjectPool.GetObject(_poolObjectTemplate.Id);
-                spawnedEnemy.transform.position = spawnPoint;
+                Poolable spawnedEnemy = _poolObjectPool.GetObject(_poolObjectTemplate.Id);
+                
+                spawnedEnemy.Activate(spawnPoint);
 
                 //Instantiate(_enemyPrefab, spawnPoint, Quaternion.identity, null);
 
-                spawnedEnemy.GetComponent<NavMeshAgent>().Warp(spawnPoint);
+                //spawnedEnemy.GetComponent<NavMeshAgent>().Warp(spawnPoint);
 
-                _enemyGroup.AddEnemy(spawnedEnemy);
+                _enemyGroup.AddEnemy(spawnedEnemy.gameObject);
             }
         }
     }

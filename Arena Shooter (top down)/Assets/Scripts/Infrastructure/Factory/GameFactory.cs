@@ -16,16 +16,17 @@ namespace Assets.Scripts.Infrastructure.Factory
             _diContainer = diContainer;
         }
 
-        public GameObject CreateObject(string id)
+        public Poolable CreateObject(string id)
         {
-            foreach (PoolObjectTemplate poolObject in _poolObjectCollection.PoolCollection)
+            foreach (PoolObjectTemplate poolObjectTemplate in _poolObjectCollection.PoolCollection)
             {
-                if (poolObject.Id == id)
+                if (poolObjectTemplate.Id == id)
                 {
-                    GameObject tmp = _diContainer.InstantiatePrefab(poolObject.PoolObject);
-                    tmp.GetComponent<Poolable>().SetId(id);
-                    
-                    return tmp;
+                    GameObject tmp = _diContainer.InstantiatePrefab(poolObjectTemplate.PoolObject);
+                    Poolable poolObject = tmp.GetComponent<Poolable>();
+                    poolObject.Initialize(id);
+
+                    return poolObject;
                 }
             }
 

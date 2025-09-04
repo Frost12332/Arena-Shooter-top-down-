@@ -71,10 +71,10 @@ PrefabInstance:
       addedObject: {fileID: 3152588309191225934}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 738f200c0f85c184c94f41354194f71a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -5642856755082519238}
+      addedObject: {fileID: 7627090859473493666}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 738f200c0f85c184c94f41354194f71a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7627090859473493666}
+      addedObject: {fileID: 4688672421137823540}
   m_SourcePrefab: {fileID: 100100000, guid: 738f200c0f85c184c94f41354194f71a, type: 3}
 --- !u!1 &4696839008333814605 stripped
 GameObject:
@@ -139,18 +139,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: 3141862245785404600}
   minDistanceToTarget: 5
---- !u!114 &-5642856755082519238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4696839008333814605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1cad7ac412378041bc42de52d602360, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7627090859473493666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,3 +153,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthPoints: 100
   _maxHealthPoints: 100
+--- !u!114 &4688672421137823540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4696839008333814605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205f0c8188249164f861eb754b8251bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 0}
