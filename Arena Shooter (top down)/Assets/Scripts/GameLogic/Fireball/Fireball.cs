@@ -1,8 +1,10 @@
+using Assets.Scripts.Infrastructure.ObjectPool;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.GameLogic.FireballBehaviour
 {
-    public class Fireball : MonoBehaviour
+    public class Fireball : MonoBehaviour, IReleasable
     {
         public float speed = 10f;
         public float maxFlyingDistance = 50f;
@@ -14,6 +16,8 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
 
         Vector3 dir;
         Vector3 startPosition;
+
+        public event Action OnReleased;
 
         public void Init(Vector3 direction)
         {
@@ -31,13 +35,14 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
 
             if (Vector3.Distance(startPosition, transform.position) > maxFlyingDistance)
             {
-                Destroy(gameObject);
+                OnReleased?.Invoke();
+                //Destroy(gameObject);
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-
+            OnReleased?.Invoke();
 
 
             //var health = other.GetComponent<Health>();
@@ -47,7 +52,8 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
             //if (hitVFX != null)
             //    Instantiate(hitVFX, transform.position, Quaternion.identity);
 
-            Destroy(gameObject);
+            //Destroy(gameObject);
+
         }
     }
 }

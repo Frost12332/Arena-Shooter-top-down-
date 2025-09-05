@@ -53,8 +53,9 @@ namespace Assets.Scripts.GameLogic.Enemy
             foreach (Vector3 spawnPoint in spawnPoints)
             {
                 Poolable spawnedEnemy = _poolObjectPool.GetObject(_poolObjectTemplate.Id);
+                PositionData position = new PositionData(spawnPoint);
                 
-                spawnedEnemy.Activate(spawnPoint);
+                spawnedEnemy.Activate(position);
 
                 //Instantiate(_enemyPrefab, spawnPoint, Quaternion.identity, null);
 

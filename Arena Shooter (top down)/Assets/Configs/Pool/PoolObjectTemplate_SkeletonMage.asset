@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad01e3683fd5d704eb452eea43e7f7ee, type: 3}
-  m_Name: PoolObjectTemplate 1
+  m_Name: PoolObjectTemplate_SkeletonMage
   m_EditorClassIdentifier: 
-  _id: SkeletonMinion
-  _poolObject: {fileID: 1428624293564481279, guid: 7331f05fbb1f1dd41aefdeb98137a879, type: 3}
+  _id: SkeletonMage
+  _poolObject: {fileID: 9022311727758688951, guid: 7b15c9bc91d978c448d2050826342fd0, type: 3}

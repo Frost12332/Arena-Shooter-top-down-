@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8538367609590355981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7687820898751206203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7231250694990784365}
+  m_Layer: 11
+  m_Name: SpellCastPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7231250694990784365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7687820898751206203}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.79, z: 1.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8538367609590355981}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7595026228242647254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,7 +134,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.60193
+      value: 24.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
       propertyPath: m_LocalPosition.y
@@ -155,6 +186,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8933028626661220741}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7231250694990784365}
     - targetCorrespondingSourceObject: {fileID: -7655872403321392018, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7992848514269900605}
@@ -195,6 +229,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5621580547834283574}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 403332108534608278}
   m_SourcePrefab: {fileID: 100100000, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
 --- !u!4 &7220459855728282504 stripped
 Transform:
@@ -264,7 +301,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9022311727758688951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13bb61c8c1287794b9429f8f7e7ee087, type: 3}
+  m_Script: {fileID: 11500000, guid: 44ba10b33dfff484293da5d435765540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 5608369339011550032}
@@ -324,8 +361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24fd022a19c834149a8d19c0ff785bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spellAtackPrefab: {fileID: 0}
-  _spellAtackStartPosition: {fileID: 0}
+  _spellAtackTemplate: {fileID: 11400000, guid: 9e3793488be6cb14bb03aa0543f9317b, type: 2}
+  _spellAtackStartPosition: {fileID: 7687820898751206203}
 --- !u!114 &7498038951615621818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,7 +377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeDelay: 0.4
   _pointForSpawn: {fileID: 8933028626661220741}
-  _enemyGroup: {fileID: 0}
+  _enemyGroup: {fileID: 403332108534608278}
   _spawnEnemyVFX: {fileID: 4472197100597932846, guid: aac01fdb15776864b87f9f4fedc97781, type: 3}
   _poolObjectTemplate: {fileID: 11400000, guid: a68b9c87fc030bb4bb0c9e6564ccb239, type: 2}
   countSummonEnemy: 5
@@ -356,8 +393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7fb665f7a434344b11c51fdba56685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyGroup: {fileID: 0}
-  _healVFX: {fileID: 0}
+  _enemyGroup: {fileID: 403332108534608278}
+  _healVFX: {fileID: 339158821923109191, guid: 108ca465382c11742bd2c91fe4fdb13f, type: 3}
 --- !u!114 &2485758662701258321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,3 +435,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: -2372660290314446523}
+--- !u!114 &403332108534608278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022311727758688951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7fb90950b441d489c7831192afb210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemies: []

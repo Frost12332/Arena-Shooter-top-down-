@@ -66,11 +66,12 @@ namespace Assets.Scripts.GameLogic
             return false;
         }
 
-        private void SpawnEnemy(Vector3 position)
+        private void SpawnEnemy(Vector3 spawnPoint)
         {
             PoolObjectTemplate enemyObject = GetRandomEnemy();
 
             Poolable enemyInstance = _gameObjectPool.GetObject(enemyObject.Id);
+            PositionData position = new PositionData(spawnPoint);
 
             enemyInstance.Activate(position);
 

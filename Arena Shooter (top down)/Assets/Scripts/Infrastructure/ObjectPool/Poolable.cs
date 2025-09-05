@@ -19,6 +19,8 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
         private void Awake()
         {
             _releasable = GetComponent<IReleasable>();
+
+            Deactivate();
         }
 
         private void OnEnable()
@@ -42,7 +44,7 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
             _releasable.OnReleased -= ReleasableEvent;
         }
 
-        public abstract void Activate(Vector3 activationPosition);
+        public abstract void Activate(IPoolActivationData data);
 
         protected abstract void Deactivate();
 

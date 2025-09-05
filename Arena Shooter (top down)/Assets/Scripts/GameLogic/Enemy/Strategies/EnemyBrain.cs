@@ -21,7 +21,7 @@ namespace Assets.Scripts.GameLogic.Enemy
             //    Call3();
             //    current = 0;
             //}
-
+            return;
             throw new NotImplementedException();
 
             foreach (BehaviourStrategy strategy in _strategies)

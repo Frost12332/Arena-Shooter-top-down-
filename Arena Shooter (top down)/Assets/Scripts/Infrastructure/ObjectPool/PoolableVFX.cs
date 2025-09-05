@@ -4,11 +4,14 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
 {
     public class PoolableVFX : Poolable
     {
-        public override void Activate(Vector3 activationPosition)
+        public override void Activate(IPoolActivationData data)
         {
-            gameObject.transform.position = activationPosition;
+            if (data is PositionData positionData)
+            {
+                gameObject.transform.position = positionData.Position;
 
-            gameObject.SetActive(true);
+                gameObject.SetActive(true);
+            }
         }
 
         protected override void Deactivate()

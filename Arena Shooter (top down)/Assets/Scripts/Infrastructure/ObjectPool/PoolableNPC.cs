@@ -7,19 +7,18 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
     {
         [SerializeField] private NavMeshAgent _agent;
 
-        public override void Activate(Vector3 activationPosition)
+        public override void Activate(IPoolActivationData data)
         {
-            _agent.Warp(activationPosition);
-            
-            _agent.isStopped = true;
+            if (data is PositionData positionData)
+            {
+                _agent.Warp(positionData.Position);
 
-            gameObject.SetActive(true);
+                gameObject.SetActive(true);
+            }
         }
 
         protected override void Deactivate()
         {
-            _agent.isStopped = true;
-
             gameObject.SetActive(false);
         }
     }
