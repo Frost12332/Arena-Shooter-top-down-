@@ -7,14 +7,22 @@ namespace Assets.Scripts.GameLogic.Enemy
 
     public class EnemyGroup : MonoBehaviour
     {
-        [SerializeField] List<GameObject> _enemies;
+        [SerializeField] private int _maxGroupSize = 6;
+        
+        [SerializeField] private List<GameObject> _enemies;
 
         private void Start()
         {
+            _enemies.Capacity = _maxGroupSize;
+
             AddEnemy(gameObject);
         }
 
-        public int Count { get { return _enemies.Count; } }
+        public bool HasFreeMembership() =>
+            _enemies.Count < _maxGroupSize;
+
+        public int CountFreeMembership() =>
+            _maxGroupSize - _enemies.Count;
 
         public void AddEnemy(GameObject enemy)
         {

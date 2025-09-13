@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8933028626661220741}
   m_Layer: 11
-  m_Name: SummonPosition
+  m_Name: SummonSpawnCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,12 +376,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6839f1c0786eb144e8f1cfa3878dfba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeDelay: 0.4
-  _pointForSpawn: {fileID: 8933028626661220741}
+  _enemyMageAnimator: {fileID: 5558720779423758939}
   _enemyGroup: {fileID: 403332108534608278}
-  _spawnEnemyVFX: {fileID: 4472197100597932846, guid: aac01fdb15776864b87f9f4fedc97781, type: 3}
-  _poolObjectTemplate: {fileID: 11400000, guid: a68b9c87fc030bb4bb0c9e6564ccb239, type: 2}
-  countSummonEnemy: 5
+  _spawnCenter: {fileID: 8933028626661220741}
+  _radius: 2
+  _summonObjectTemplate: {fileID: 11400000, guid: a68b9c87fc030bb4bb0c9e6564ccb239, type: 2}
 --- !u!114 &9184608041044912550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,4 +447,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7fb90950b441d489c7831192afb210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxGroupSize: 6
   _enemies: []

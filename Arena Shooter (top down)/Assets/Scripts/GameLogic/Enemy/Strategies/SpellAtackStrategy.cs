@@ -24,7 +24,7 @@ namespace Assets.Scripts.GameLogic.Enemy
 
         private void Start()
         {
-            _enemyMageAnimator.OnSpellCastShootFired += SpellCasting;
+            _enemyMageAnimator.OnSpellCastShoot += SpellCasting;
         }
 
         public override bool CanExecute()
@@ -47,11 +47,11 @@ namespace Assets.Scripts.GameLogic.Enemy
 
 
 
-            _enemyMageAnimator.OnAnimationEnd += OnAnimationEnd;
+            _enemyMageAnimator.OnSpellCastShootEnd += OnAnimationEnd;
 
             yield return new WaitUntil(() => animationEnd);
 
-            _enemyMageAnimator.OnAnimationEnd -= OnAnimationEnd;
+            _enemyMageAnimator.OnSpellCastShootEnd -= OnAnimationEnd;
         }
 
         private void SpellCasting()
@@ -64,7 +64,7 @@ namespace Assets.Scripts.GameLogic.Enemy
 
         private void OnDestroy()
         {
-            _enemyMageAnimator.OnSpellCastShootFired -= SpellCasting;
+            _enemyMageAnimator.OnSpellCastShoot -= SpellCasting;
         }
     }
 }

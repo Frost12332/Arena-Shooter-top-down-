@@ -1,6 +1,8 @@
 ﻿using Assets.Scripts.Config;
+using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol;
 using Assets.Scripts.Infrastructure.ObjectPool;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
@@ -9,59 +11,79 @@ namespace Assets.Scripts.GameLogic.Enemy
 {
     public class SummonStrategy : BehaviourStrategy
     {
-        [SerializeField] private Transform _pointForSpawn;
+        [SerializeField] private EnemyMageAnimator _enemyMageAnimator;
         [SerializeField] private EnemyGroup _enemyGroup;
 
-        [SerializeField] private GameObject _spawnEnemyVFX;
+        [SerializeField] private Transform _spawnCenter;
+        [SerializeField] private float _radius = 2;
 
-        [SerializeField] private PoolObjectTemplate _poolObjectTemplate;
-        private IGameObjectPool _poolObjectPool;
-
-        public int countSummonEnemy = 5;
-
+        [SerializeField] private PoolObjectTemplate _summonObjectTemplate;
+        private IGameObjectPool _gameObjectPool;
 
         [Inject]
         private void Construct(IGameObjectPool pool)
         {
-            _poolObjectPool = pool;
+            _gameObjectPool = pool;
+        }
+
+        private void Start()
+        {
+            _enemyMageAnimator.OnSpellCastSummon += Summon;
         }
 
 
         public override bool CanExecute()
         {
-            return _enemyGroup.Count < countSummonEnemy;
+            return _enemyGroup.HasFreeMembership();
         }
 
         protected override IEnumerator ExecuteBehavior()
         {
-            Vector3[] spawnPoints = {
-                _pointForSpawn.position,
-                new Vector3(_pointForSpawn.position.x - 2, _pointForSpawn.position.y, _pointForSpawn.position.z),
-                new Vector3(_pointForSpawn.position.x + 2, _pointForSpawn.position.y, _pointForSpawn.position.z),
-                new Vector3(_pointForSpawn.position.x - 4, _pointForSpawn.position.y, _pointForSpawn.position.z),
-                new Vector3(_pointForSpawn.position.x + 4, _pointForSpawn.position.y, _pointForSpawn.position.z),
-            };
+            _enemyMageAnimator.PlaySummon();
 
-            foreach (Vector3 spawnPoint in spawnPoints)
+            bool animationEnd = false;
+
+            void OnAnimationEnd()
             {
-                GameObject vfx = Instantiate(_spawnEnemyVFX, spawnPoint, Quaternion.identity, null);
+                animationEnd = true;
             }
 
-            yield return null;
+            _enemyMageAnimator.OnSpellCastSummonEnd += OnAnimationEnd;
 
-            foreach (Vector3 spawnPoint in spawnPoints)
+            yield return new WaitUntil(() => animationEnd);
+
+            _enemyMageAnimator.OnSpellCastSummonEnd -= OnAnimationEnd;
+        }
+
+        private void Summon()
+        {
+            int countSummonCharacter = _enemyGroup.CountFreeMembership();
+
+            foreach (Vector3 point in GetSpawnPoints(_spawnCenter.position, _radius, countSummonCharacter))
             {
-                Poolable spawnedEnemy = _poolObjectPool.GetObject(_poolObjectTemplate.Id);
-                PositionData position = new PositionData(spawnPoint);
-                
-                spawnedEnemy.Activate(position);
+                /*_summonObjectTemplate this must be prefab which include character and VFX for simplest
+                 first working VFX then showing character, and after this character attack*/
+                Poolable spawnedCharacter = _gameObjectPool.GetObject(_summonObjectTemplate.Id);
+                PositionData positionData = new PositionData(point);
 
-                //Instantiate(_enemyPrefab, spawnPoint, Quaternion.identity, null);
+                spawnedCharacter.Activate(positionData);
 
-                //spawnedEnemy.GetComponent<NavMeshAgent>().Warp(spawnPoint);
-
-                _enemyGroup.AddEnemy(spawnedEnemy.gameObject);
+                _enemyGroup.AddEnemy(spawnedCharacter.gameObject);
             }
+        }
+
+        private IEnumerable<Vector3> GetSpawnPoints(Vector3 center, float radius, int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                Vector2 circle = UnityEngine.Random.insideUnitCircle * radius;
+                yield return new Vector3(center.x + circle.x, center.y, center.z + circle.y);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            _enemyMageAnimator.OnSpellCastSummon -= Summon;
         }
     }
 }

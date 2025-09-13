@@ -11,20 +11,27 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
 
         private readonly int Speed = Animator.StringToHash("Speed");
         private readonly int SpellcastShoot = Animator.StringToHash("SpellcastShoot");
-        private readonly int RaiseWarriors = Animator.StringToHash("RaiseWarriors");
+        private readonly int Summon = Animator.StringToHash("Summon");
         private readonly int PowerfulSpelcastShoot = Animator.StringToHash("PowerfulSpelcastShoot");
         private readonly int Spellcasting = Animator.StringToHash("Spellcasting");
         private readonly int Hit = Animator.StringToHash("Hit");
         private readonly int Die = Animator.StringToHash("Die");
 
 
+        /*Animation Event*/
+        public event Action OnSpellCastShoot;
+        public event Action OnSpellCastSummon;
+        /*Animation Event*/
 
-        public event Action OnSpellCastShootFired;
-        public event Action OnSummonWarriorsSpawn;
+        /*StateMachineBehaviour*/
+        public event Action OnSpellCastShootEnd;
+        public event Action OnSpellCastSummonEnd;
+        /*StateMachineBehaviour*/
+
+
 
         public event Action OnAnimationHit;
 
-        public event Action OnAnimationEnd;
 
 
 
@@ -43,9 +50,9 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
             _animator.SetTrigger(SpellcastShoot);
         }
 
-        public void PlayRaiseWarriors()
+        public void PlaySummon()
         {
-            _animator.SetTrigger(RaiseWarriors);
+            _animator.SetTrigger(Summon);
         }
 
         public void PlayPowerfulSpelcastShoot()
@@ -69,17 +76,38 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
         }
 
 
+        /*this is ANIMATION EVENT look at animation on Animator*/
 
-        public void RaiseSpellCastShootEvent() =>
-            OnSpellCastShootFired?.Invoke();
+        public void SpellCastShootAnimationEvent() =>
+            OnSpellCastShoot?.Invoke();
 
-        public void RaiseSummonWarriorsSpawnEvent() =>
-            OnSummonWarriorsSpawn?.Invoke();
+        public void SpellCastSummonAnimationEvent() =>
+            OnSpellCastSummon?.Invoke();
+
+        /*this is ANIMATION EVENT look at animation on Animator*/
+
+
+
+
+
+        /*this event raise from StateMachineBehaviour which attach to animation on Animator*/
+        
+        public void CallSpellCastShootEndEvent() =>
+            OnSpellCastShootEnd?.Invoke();
+
+        public void CallSpellCastSummonEndEvent() =>
+            OnSpellCastSummonEnd?.Invoke();
+
+
+
+
+
+
 
         public void RaiseAnimationHitEvent() =>
             OnAnimationHit?.Invoke();
         
-        public void RaiseAnimationEndEvent() =>
-            OnAnimationEnd?.Invoke();
+
+        /*this event raise from StateMachineBehaviour which attach to animation on Animator*/
     }
 }

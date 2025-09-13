@@ -43,7 +43,8 @@ namespace Assets.Scripts.GameLogic.Enemy
         [ContextMenu("Call2")]
         public void Call2()
         {
-            _strategies[1].Execute();
+            if (_strategies[1].CanExecute())
+                _strategies[1].Execute();
         }
 
         [ContextMenu("Call3")]

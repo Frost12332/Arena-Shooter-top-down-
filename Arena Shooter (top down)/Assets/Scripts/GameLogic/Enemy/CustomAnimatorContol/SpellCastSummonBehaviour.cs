@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
 {
-    public class SpellCastShootBehaviour : StateMachineBehaviour
+    public class SpellCastSummonBehaviour : StateMachineBehaviour
     {
         EnemyMageAnimator animatorController = null;
 
@@ -11,7 +11,7 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
             if (animatorController == null)
                 animatorController = animator.GetComponent<EnemyMageAnimator>();
 
-            animatorController.CallSpellCastShootEndEvent();
+            animatorController.CallSpellCastSummonEndEvent();
         }
     }
 }
