@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Config;
+using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol;
 using Assets.Scripts.GameLogic.FireballBehaviour;
 using Assets.Scripts.Infrastructure.ObjectPool;
 using System.Collections;
@@ -11,6 +12,7 @@ namespace Assets.Scripts.GameLogic.Enemy
     {
         [SerializeField] private PoolObjectTemplate _spellAtackTemplate;
         [SerializeField] private GameObject _spellAtackStartPosition;
+        [SerializeField] private EnemyMageAnimator _enemyMageAnimator;
 
         private IGameObjectPool _gameObjectPool;
 
@@ -20,26 +22,49 @@ namespace Assets.Scripts.GameLogic.Enemy
             _gameObjectPool = gameObjectPool;
         }
 
+        private void Start()
+        {
+            _enemyMageAnimator.OnSpellCastShootFired += SpellCasting;
+        }
+
         public override bool CanExecute()
         {
-            return true;
+            return true;//TODO: is have enough mana
         }
 
         protected override IEnumerator ExecuteBehavior()
+        {
+            _enemyMageAnimator.PlaySpellCastShoot();
+
+
+
+            bool animationEnd = false;
+
+            void OnAnimationEnd()
+            {
+                animationEnd = true;
+            }
+
+
+
+            _enemyMageAnimator.OnAnimationEnd += OnAnimationEnd;
+
+            yield return new WaitUntil(() => animationEnd);
+
+            _enemyMageAnimator.OnAnimationEnd -= OnAnimationEnd;
+        }
+
+        private void SpellCasting()
         {
             Poolable spellAtack = _gameObjectPool.GetObject(_spellAtackTemplate.Id);
             ProjectileData projectileData = new ProjectileData(_spellAtackStartPosition.transform.position, _spellAtackStartPosition.transform.forward);
 
             spellAtack.Activate(projectileData);
+        }
 
-            //spellAtack.Activate(_spellAtackStartPosition.position);
-
-            //GameObject gameObject = Instantiate(_spellAtackPrefab, _spellAtackStartPosition.position, Quaternion.identity, null);
-
-            //gameObject.GetComponent<Fireball>().Init(_spellAtackStartPosition.forward);
-
-
-            yield return null;
+        private void OnDestroy()
+        {
+            _enemyMageAnimator.OnSpellCastShootFired -= SpellCasting;
         }
     }
 }

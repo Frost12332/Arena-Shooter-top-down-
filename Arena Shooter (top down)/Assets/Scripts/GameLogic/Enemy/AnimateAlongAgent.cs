@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Assets.Scripts.GameLogic.Enemy

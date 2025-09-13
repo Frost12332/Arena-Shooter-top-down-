@@ -9,7 +9,6 @@ namespace Assets.Scripts.GameLogic.Enemy
 {
     public class SummonStrategy : BehaviourStrategy
     {
-        [SerializeField] private float timeDelay = 0.4f;
         [SerializeField] private Transform _pointForSpawn;
         [SerializeField] private EnemyGroup _enemyGroup;
 
@@ -48,7 +47,7 @@ namespace Assets.Scripts.GameLogic.Enemy
                 GameObject vfx = Instantiate(_spawnEnemyVFX, spawnPoint, Quaternion.identity, null);
             }
 
-            yield return new WaitForSeconds(timeDelay);
+            yield return null;
 
             foreach (Vector3 spawnPoint in spawnPoints)
             {

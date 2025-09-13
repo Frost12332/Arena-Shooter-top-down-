@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.GameLogic.Enemy
+﻿namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
 {
     public interface IEnemyAnimator
     {

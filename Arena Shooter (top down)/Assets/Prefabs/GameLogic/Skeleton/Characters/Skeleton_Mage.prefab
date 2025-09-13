@@ -363,6 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spellAtackTemplate: {fileID: 11400000, guid: 9e3793488be6cb14bb03aa0543f9317b, type: 2}
   _spellAtackStartPosition: {fileID: 7687820898751206203}
+  _enemyMageAnimator: {fileID: 5558720779423758939}
 --- !u!114 &7498038951615621818
 MonoBehaviour:
   m_ObjectHideFlags: 0

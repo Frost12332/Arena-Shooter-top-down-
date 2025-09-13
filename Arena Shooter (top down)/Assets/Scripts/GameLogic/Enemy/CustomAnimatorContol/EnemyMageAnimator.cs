@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-namespace Assets.Scripts.GameLogic.Enemy
+namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
 {
     public class EnemyMageAnimator : MonoBehaviour, IEnemyAnimator
     {
@@ -15,6 +16,17 @@ namespace Assets.Scripts.GameLogic.Enemy
         private readonly int Spellcasting = Animator.StringToHash("Spellcasting");
         private readonly int Hit = Animator.StringToHash("Hit");
         private readonly int Die = Animator.StringToHash("Die");
+
+
+
+        public event Action OnSpellCastShootFired;
+        public event Action OnSummonWarriorsSpawn;
+
+        public event Action OnAnimationHit;
+
+        public event Action OnAnimationEnd;
+
+
 
         public void PlayMove(float speed)
         {
@@ -55,5 +67,19 @@ namespace Assets.Scripts.GameLogic.Enemy
         {
             _animator.SetTrigger(Die);
         }
+
+
+
+        public void RaiseSpellCastShootEvent() =>
+            OnSpellCastShootFired?.Invoke();
+
+        public void RaiseSummonWarriorsSpawnEvent() =>
+            OnSummonWarriorsSpawn?.Invoke();
+
+        public void RaiseAnimationHitEvent() =>
+            OnAnimationHit?.Invoke();
+        
+        public void RaiseAnimationEndEvent() =>
+            OnAnimationEnd?.Invoke();
     }
 }
