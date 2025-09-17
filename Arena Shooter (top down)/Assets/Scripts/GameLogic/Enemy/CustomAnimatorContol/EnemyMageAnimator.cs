@@ -21,7 +21,7 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
         /*Animation Event*/
         public event Action OnSpellCastShoot;
         public event Action OnSpellCastSummon;
-        public event Action OnSpellCastHeal;
+        public event Action OnSpellCastHeal;/*unused*/
         /*Animation Event*/
 
         /*StateMachineBehaviour*/
@@ -105,15 +105,18 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
         public void CallSpellCastSummonEndEvent() =>
             OnSpellCastSummonEnd?.Invoke();
 
+        public void CallSpellCastHealEndEvent()
+        {
+            StopPlayeHeal();
+            OnSpellCastHealEnd?.Invoke();
+        }
 
 
 
 
 
 
-        public void RaiseAnimationHitEvent() =>
-            OnAnimationHit?.Invoke();
-        
+
 
         /*this event raise from StateMachineBehaviour which attach to animation on Animator*/
     }

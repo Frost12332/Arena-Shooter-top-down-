@@ -20,7 +20,7 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
         {
             _releasable = GetComponent<IReleasable>();
 
-            Deactivate();
+            //Deactivate();
         }
 
         private void OnEnable()

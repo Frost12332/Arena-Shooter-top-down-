@@ -11,6 +11,14 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
 
         public event Action OnReleased;
 
+        public void Healing(int healthPoints)
+        {
+            if (_healthPoints + healthPoints > _maxHealthPoints)
+                _healthPoints = _maxHealthPoints;
+            else
+                _healthPoints += healthPoints;
+        }
+
         public void TakeDamage(int damage)
         {
             _healthPoints -= damage;

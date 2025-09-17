@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.GameLogic.Enemy.Group;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.ObjectPool
@@ -44,6 +45,29 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
         {
             _position = position;
             _enemyGroup = enemyGroup;
+        }
+    }
+
+    public class HealingData : IPoolActivationData
+    {
+        private Transform _target;
+
+        private Action<GameObject> _activateHealingVFX;
+        private Action _shutdownHealingVFX;
+        private Action _releaseHealingVFX;
+
+
+        public Transform Target { get { return _target; } }
+        public Action<GameObject> ActivateHealingVFX { get { return _activateHealingVFX; } }
+        public Action ShutdownHealingVFX { get { return _shutdownHealingVFX; } }
+        public Action ReleaseHealingVFX { get { return _releaseHealingVFX; } }
+
+        public HealingData(Transform target, Action<GameObject> activateHealingVFX, Action shutdownHealingVFX, Action releaseHealingVFX)
+        {
+            _target = target;
+            _activateHealingVFX = activateHealingVFX;
+            _shutdownHealingVFX = shutdownHealingVFX;
+            _releaseHealingVFX = releaseHealingVFX;
         }
     }
 }
