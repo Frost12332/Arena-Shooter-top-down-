@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Config;
 using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol;
+using Assets.Scripts.GameLogic.Enemy.Group;
 using Assets.Scripts.Infrastructure.ObjectPool;
 using System.Collections;
 using System.Collections.Generic;
@@ -64,26 +65,43 @@ namespace Assets.Scripts.GameLogic.Enemy
                 /*_summonObjectTemplate this must be prefab which include character and VFX for simplest
                  first working VFX then showing character, and after this character attack*/
                 Poolable spawnedCharacter = _gameObjectPool.GetObject(_summonObjectTemplate.Id);
-                PositionData positionData = new PositionData(point);
+                NPCActivationData npcActivationData = new NPCActivationData(point, _enemyGroup);
 
-                spawnedCharacter.Activate(positionData);
-
-                _enemyGroup.AddEnemy(spawnedCharacter.gameObject);
+                spawnedCharacter.Activate(npcActivationData);
             }
         }
 
         private IEnumerable<Vector3> GetSpawnPoints(Vector3 center, float radius, int count)
         {
+            List<Vector3> points = new List<Vector3>();
+            float angleStep = 360f / count;
+
             for (int i = 0; i < count; i++)
             {
-                Vector2 circle = UnityEngine.Random.insideUnitCircle * radius;
-                yield return new Vector3(center.x + circle.x, center.y, center.z + circle.y);
+                float angle = angleStep * i + UnityEngine.Random.Range(-angleStep * 0.3f, angleStep * 0.3f);
+                float distance = UnityEngine.Random.Range(radius * 0.5f, radius);
+
+                float x = Mathf.Cos(angle * Mathf.Deg2Rad) * distance;
+                float z = Mathf.Sin(angle * Mathf.Deg2Rad) * distance;
+
+                points.Add(new Vector3(center.x + x, center.y, center.z + z));
             }
+
+            return points;
         }
 
         private void OnDestroy()
         {
             _enemyMageAnimator.OnSpellCastSummon -= Summon;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+
+            Gizmos.DrawWireSphere(_spawnCenter.position, _radius);
+
+            Gizmos.color = Color.white;
         }
     }
 }

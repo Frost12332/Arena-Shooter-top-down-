@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.GameLogic.Enemy.Group;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Assets.Scripts.Infrastructure.ObjectPool
@@ -6,12 +7,22 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
     public class PoolableNPC : Poolable
     {
         [SerializeField] private NavMeshAgent _agent;
+        [SerializeField] private EnemyMember _enemyMember;
+        
+        private EnemyGroup _assignedGroup;
+
 
         public override void Activate(IPoolActivationData data)
         {
-            if (data is PositionData positionData)
+            if (data is NPCActivationData npcActivationData)
             {
-                _agent.Warp(positionData.Position);
+                _agent.Warp(npcActivationData.Position);
+                _assignedGroup = npcActivationData.EnemyGroup;
+
+                if (_assignedGroup != null)
+                {
+                    _assignedGroup.Add(_enemyMember);
+                }
 
                 gameObject.SetActive(true);
             }
@@ -19,6 +30,12 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
 
         protected override void Deactivate()
         {
+            if (_assignedGroup != null)
+            {
+                _assignedGroup.Remove(_enemyMember);
+                _assignedGroup = null;
+            }
+
             gameObject.SetActive(false);
         }
     }

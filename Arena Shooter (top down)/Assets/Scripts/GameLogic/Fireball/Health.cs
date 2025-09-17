@@ -15,8 +15,23 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
         {
             _healthPoints -= damage;
 
-            if (_healthPoints > 0)
-                OnReleased?.Invoke();
+            if (_healthPoints <= 0)
+                Die();
         }
+        [ContextMenu("Kill")]
+        public void Kill()
+        {
+            _healthPoints = 0;
+            Die();
+        }
+
+        private void Die()
+        {
+            OnReleased?.Invoke();
+        }
+
+
+        public bool IsNeedHealing() =>
+            _healthPoints < _maxHealthPoints;
     }
 }

@@ -13,7 +13,7 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
         private readonly int SpellcastShoot = Animator.StringToHash("SpellcastShoot");
         private readonly int Summon = Animator.StringToHash("Summon");
         private readonly int PowerfulSpelcastShoot = Animator.StringToHash("PowerfulSpelcastShoot");
-        private readonly int Spellcasting = Animator.StringToHash("Spellcasting");
+        private readonly int Heal = Animator.StringToHash("Heal");
         private readonly int Hit = Animator.StringToHash("Hit");
         private readonly int Die = Animator.StringToHash("Die");
 
@@ -21,11 +21,13 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
         /*Animation Event*/
         public event Action OnSpellCastShoot;
         public event Action OnSpellCastSummon;
+        public event Action OnSpellCastHeal;
         /*Animation Event*/
 
         /*StateMachineBehaviour*/
         public event Action OnSpellCastShootEnd;
         public event Action OnSpellCastSummonEnd;
+        public event Action OnSpellCastHealEnd;
         /*StateMachineBehaviour*/
 
 
@@ -60,9 +62,14 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
             _animator.SetTrigger(PowerfulSpelcastShoot);
         }
 
-        public void PlaySpellcasting()
+        public void StartPlayHeal()
         {
-            _animator.SetTrigger(Spellcasting);
+            _animator.SetBool(Heal, true);
+        }
+
+        public void StopPlayeHeal()
+        {
+            _animator.SetBool(Heal, false);
         }
 
         public void PlayHit()

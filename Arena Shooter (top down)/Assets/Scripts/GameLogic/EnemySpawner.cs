@@ -71,9 +71,9 @@ namespace Assets.Scripts.GameLogic
             PoolObjectTemplate enemyObject = GetRandomEnemy();
 
             Poolable enemyInstance = _gameObjectPool.GetObject(enemyObject.Id);
-            PositionData position = new PositionData(spawnPoint);
+            NPCActivationData npcActivationData = new NPCActivationData(spawnPoint, null);
 
-            enemyInstance.Activate(position);
+            enemyInstance.Activate(npcActivationData);
 
             //enemyInstance.transform.position = position;
 

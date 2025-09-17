@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.GameLogic.Enemy.Group;
+using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.ObjectPool
 {
@@ -28,6 +29,21 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
         {
             _position = position;
             _direction = direction;
+        }
+    }
+
+    public class NPCActivationData : IPoolActivationData
+    {
+        private Vector3 _position;
+        private EnemyGroup _enemyGroup;
+
+        public Vector3 Position { get { return _position; } }
+        public EnemyGroup EnemyGroup { get { return _enemyGroup; } }
+
+        public NPCActivationData(Vector3 position, EnemyGroup enemyGroup)
+        {
+            _position = position;
+            _enemyGroup = enemyGroup;
         }
     }
 }
