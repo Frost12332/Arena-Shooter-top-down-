@@ -12,8 +12,10 @@ using Zenject;
 
 namespace Assets.Scripts.GameLogic.Enemy
 {
-    public class HealStrategy : BehaviourStrategy
+    public class HealStrategy : BehaviourStrategy, IBuffVFXController
     {
+        private const float second = 1.0f;
+
         [SerializeField] private EnemyGroup _enemyGroup;
         [SerializeField] private PoolObjectTemplate _healVFX;
         [SerializeField] private EnemyMageAnimator _enemyMageAnimator;
@@ -21,34 +23,23 @@ namespace Assets.Scripts.GameLogic.Enemy
 
         [SerializeField] private float _maxTimeForHealing = 5.0f;
         [SerializeField] private float _tickInterval = 0.25f;
-        [SerializeField] private int _healAmount = 5;
+        [SerializeField] private int _healAmountInSeconds = 5;
         private float _currentHealTime;
+        private float _healTickAcumulator;
 
         private bool _animationInterrupt;
 
         private IGameObjectPool _gameObjectPool;
 
-
-        private event Action<GameObject> _activateHealingVFX;
-        private event Action _shutdownHealingVFX;
-        private event Action _releaseHealingVFX;
-
-
+        public event Action<GameObject> ActivateBuffVFX;
+        public event Action<GameObject> DeactivateBuffVFX;
+        public event Action ReleaseBuffVFX;
 
         [Inject]
         private void Construct(IGameObjectPool pool)
         {
             _gameObjectPool = pool;
         }
-
-
-        private void Awake()
-        {
-            _activateHealingVFX = delegate { };
-            _shutdownHealingVFX = delegate { };
-            _releaseHealingVFX = delegate { };
-        }
-
 
         public override bool CanExecute()
         {
@@ -80,7 +71,7 @@ namespace Assets.Scripts.GameLogic.Enemy
 
         private IEnumerator Healing()
         {
-            IEnumerable<EnemyMember> healGroup = _enemyGroup.Search(IsNeedHeal);
+            EnemyMember[] healGroup = _enemyGroup.Search(IsNeedHeal).ToArray();
 
             if (healGroup.Any())/*Group for heal empty, stop healing*/
                 SpawnVFXForAllGroup(healGroup);
@@ -89,25 +80,31 @@ namespace Assets.Scripts.GameLogic.Enemy
 
             while (!_animationInterrupt)
             {
-                _shutdownHealingVFX?.Invoke();
-
                 foreach (EnemyMember heal in healGroup)
                 {
                     if (IsNeedHeal(heal))
                     {
-                        _activateHealingVFX?.Invoke(heal.gameObject);
-                        heal.Health.Healing(_healAmount);
+                        ActivateBuffVFX?.Invoke(heal.gameObject);
+
+                        if (_healTickAcumulator >= second)/*Healing animation play longer because WaitForSecond*/
+                        {
+                            heal.Health.Healing(_healAmountInSeconds);
+                            _healTickAcumulator = 0;
+                        }
                     }
+                    else
+                        DeactivateBuffVFX?.Invoke(heal.gameObject);
                 }
 
                 yield return new WaitForSeconds(_tickInterval);
                 _currentHealTime += _tickInterval;
+                _healTickAcumulator += _tickInterval;
 
                 if (_currentHealTime >= _maxTimeForHealing)
                     _animationInterrupt = true;
             }
 
-            _releaseHealingVFX?.Invoke();
+            ReleaseBuffVFX?.Invoke();
         }
 
 
@@ -116,7 +113,7 @@ namespace Assets.Scripts.GameLogic.Enemy
             foreach (EnemyMember enemy in healGroup)
             {
                 Poolable poolable = _gameObjectPool.GetObject(_healVFX.Id);
-                HealingData healingData = new HealingData(enemy.transform, _activateHealingVFX, _shutdownHealingVFX, _releaseHealingVFX);
+                BuffVFXData healingData = new BuffVFXData(enemy.transform, this);
 
                 poolable.Activate(healingData);
             }

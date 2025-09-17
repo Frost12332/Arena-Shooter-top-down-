@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.GameLogic.Enemy.Group;
+﻿using Assets.Scripts.GameLogic.Enemy;
+using Assets.Scripts.GameLogic.Enemy.Group;
 using System;
 using UnityEngine;
 
@@ -48,26 +49,19 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
         }
     }
 
-    public class HealingData : IPoolActivationData
+    public class BuffVFXData : IPoolActivationData
     {
         private Transform _target;
-
-        private Action<GameObject> _activateHealingVFX;
-        private Action _shutdownHealingVFX;
-        private Action _releaseHealingVFX;
+        private IBuffVFXController _buffVFXController;
 
 
         public Transform Target { get { return _target; } }
-        public Action<GameObject> ActivateHealingVFX { get { return _activateHealingVFX; } }
-        public Action ShutdownHealingVFX { get { return _shutdownHealingVFX; } }
-        public Action ReleaseHealingVFX { get { return _releaseHealingVFX; } }
+        public IBuffVFXController BuffVFXController { get { return _buffVFXController; } }
 
-        public HealingData(Transform target, Action<GameObject> activateHealingVFX, Action shutdownHealingVFX, Action releaseHealingVFX)
+        public BuffVFXData(Transform target, IBuffVFXController buffVFXController)
         {
             _target = target;
-            _activateHealingVFX = activateHealingVFX;
-            _shutdownHealingVFX = shutdownHealingVFX;
-            _releaseHealingVFX = releaseHealingVFX;
+            _buffVFXController = buffVFXController;
         }
     }
 }

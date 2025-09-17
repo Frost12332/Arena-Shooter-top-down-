@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.GameLogic.Enemy.Group;
+﻿using Assets.Scripts.GameLogic.Enemy;
+using Assets.Scripts.GameLogic.Enemy.Group;
 using System;
 using UnityEngine;
 
@@ -8,26 +9,24 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
     {
         [SerializeField] private ParticleSystem[] _particleSystem;
         private Transform _target;
+        private IBuffVFXController _buffVFXController;
 
         public event Action OnReleased;
 
-        private Action<GameObject> _activateHealingVFX;
-        private Action _shutdownHealingVFX;
-        private Action _releaseHealingVFX;
 
 
         public override void Activate(IPoolActivationData data)
         {
-            if (data is  HealingData healingData)
+            if (data is  BuffVFXData healingData)
             {
                 _target = healingData.Target;
-                _activateHealingVFX = healingData.ActivateHealingVFX;
-                _shutdownHealingVFX = healingData.ShutdownHealingVFX;
-                _releaseHealingVFX = healingData.ReleaseHealingVFX;
+                _buffVFXController = healingData.BuffVFXController;
 
-                _activateHealingVFX += ActivateVFX;
-                _shutdownHealingVFX += ShutdonwVFX;
-                _releaseHealingVFX += ReleaseVFX;
+
+                _buffVFXController.ActivateBuffVFX += ActivateVFX;
+                _buffVFXController.DeactivateBuffVFX += DeactivateVFX;
+                _buffVFXController.ReleaseBuffVFX += ReleaseVFX;
+
 
                 gameObject.SetActive(true);
             }
@@ -36,28 +35,33 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
         {
             _target = null;
 
-            _activateHealingVFX -= ActivateVFX;
-            _shutdownHealingVFX -= ShutdonwVFX;
-            _releaseHealingVFX -= ReleaseVFX;
 
-            _activateHealingVFX = null;
-            _shutdownHealingVFX = null;
-            _releaseHealingVFX = null;
+            _buffVFXController.ActivateBuffVFX -= ActivateVFX;
+            _buffVFXController.DeactivateBuffVFX -= DeactivateVFX;
+            _buffVFXController.ReleaseBuffVFX -= ReleaseVFX;
+
+
+            _buffVFXController = null;
 
             gameObject.SetActive(false);
         }
-
 
         private void ActivateVFX(GameObject receivedGameObject)
         {
-            if (this.gameObject == receivedGameObject)
+            if (_target.gameObject == receivedGameObject)
             {
-                gameObject.SetActive(true);
+                if (!gameObject.activeSelf)
+                    gameObject.SetActive(true);
             }
         }
-        private void ShutdonwVFX()
+
+        private void DeactivateVFX(GameObject receivedGameObject)
         {
-            gameObject.SetActive(false);
+            if (_target.gameObject == receivedGameObject)
+            {
+                if (gameObject.activeSelf) 
+                    gameObject.SetActive(false);
+            }
         }
 
         private void ReleaseVFX()
@@ -65,20 +69,10 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
             OnReleased?.Invoke();
         }
 
-
-
         private void Update()
         {
             if (gameObject.activeSelf)
-            {
                 gameObject.transform.position = _target.transform.position;
-            }
-
-            for (int i = 0; i < _particleSystem.Length; i++)
-            {
-                if (_particleSystem[i].isStopped)
-                    _particleSystem[i].Play();
-            }
         }
     }
 }
