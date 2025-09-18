@@ -401,7 +401,7 @@ MonoBehaviour:
   _enemyMageAnimator: {fileID: 5558720779423758939}
   _maxTimeForHealing: 5
   _tickInterval: 0.25
-  _healAmount: 5
+  _healAmountInSeconds: 5
 --- !u!114 &2485758662701258321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,6 +443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: -2372660290314446523}
   _enemyMember: {fileID: 8878420526065915309}
+  _health: {fileID: 4789530085685029897}
 --- !u!114 &403332108534608278
 MonoBehaviour:
   m_ObjectHideFlags: 0

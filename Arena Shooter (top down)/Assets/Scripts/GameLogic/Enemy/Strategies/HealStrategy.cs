@@ -43,7 +43,7 @@ namespace Assets.Scripts.GameLogic.Enemy
 
         public override bool CanExecute()
         {
-            return true;
+            return _enemyGroup.Search(IsNeedHeal).Any();
         }
 
         protected override IEnumerator ExecuteBehavior()
@@ -87,20 +87,20 @@ namespace Assets.Scripts.GameLogic.Enemy
                         ActivateBuffVFX?.Invoke(heal.gameObject);
 
                         if (_healTickAcumulator >= second)/*Healing animation play longer because WaitForSecond*/
-                        {
                             heal.Health.Healing(_healAmountInSeconds);
-                            _healTickAcumulator = 0;
-                        }
                     }
                     else
                         DeactivateBuffVFX?.Invoke(heal.gameObject);
                 }
 
+                if (_healTickAcumulator > second)
+                    _healTickAcumulator = 0;
+
                 yield return new WaitForSeconds(_tickInterval);
                 _currentHealTime += _tickInterval;
                 _healTickAcumulator += _tickInterval;
 
-                if (_currentHealTime >= _maxTimeForHealing)
+                if (_currentHealTime >= _maxTimeForHealing || IsAllGroupHealed(healGroup))
                     _animationInterrupt = true;
             }
 
@@ -122,6 +122,16 @@ namespace Assets.Scripts.GameLogic.Enemy
         private bool IsNeedHeal(EnemyMember data)
         {
             return data.Health.IsNeedHealing();
+        }
+
+        private bool IsAllGroupHealed(EnemyMember[] healGroup)
+        {
+            foreach (EnemyMember enemy in healGroup)
+            {
+                if (IsNeedHeal(enemy))
+                    return false;
+            }
+            return true;
         }
     }
 }

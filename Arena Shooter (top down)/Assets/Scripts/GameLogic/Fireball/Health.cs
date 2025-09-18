@@ -9,7 +9,15 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
         [SerializeField] private int _healthPoints;
         [SerializeField] private int _maxHealthPoints;
 
+        private bool _isAlive = true;
+
         public event Action OnReleased;
+
+        public void Arise()
+        {
+            _healthPoints = _maxHealthPoints;
+            _isAlive = true;
+        }
 
         public void Healing(int healthPoints)
         {
@@ -35,11 +43,12 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
 
         private void Die()
         {
+            _isAlive = false;
             OnReleased?.Invoke();
         }
 
 
         public bool IsNeedHealing() =>
-            _healthPoints < _maxHealthPoints;
+            _healthPoints < _maxHealthPoints && _isAlive;
     }
 }

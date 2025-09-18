@@ -9,25 +9,19 @@ namespace Assets.Scripts.GameLogic.Enemy
         [Header("Top strategy have highest priority")]
         [SerializeField] private List<BehaviourStrategy> _strategies;
 
-        //float current = 0;
-        //float max = 1;
+        private BehaviourStrategy _currentStrategy = null;
+
 
         private void Update()
         {
-            //current += Time.deltaTime;
-
-            //if (current > max)
-            //{
-            //    Call3();
-            //    current = 0;
-            //}
-            return;
-            throw new NotImplementedException();
+            if (_currentStrategy != null && _currentStrategy.IsExecute())
+                return;
 
             foreach (BehaviourStrategy strategy in _strategies)
             {
                 if (strategy != null && strategy.CanExecute())
                 {
+                    _currentStrategy = strategy;
                     strategy.Execute();
                     break;
                 }

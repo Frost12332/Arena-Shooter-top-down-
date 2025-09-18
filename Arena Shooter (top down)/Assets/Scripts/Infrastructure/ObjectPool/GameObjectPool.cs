@@ -1,5 +1,6 @@
 using Assets.Scripts.Config;
 using Assets.Scripts.Infrastructure.Factory;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,10 +30,7 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
                 if (stack.Count > 0)
                     return stack.Pop();
                 else
-                {
-                    RequestNewObject(id);
-                    return GetObject(id);
-                }
+                    return RequestNewObject(id);
             }
             else
             {
@@ -41,15 +39,14 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
             }
         }
 
-        private void RequestNewObject(string id)
+        private Poolable RequestNewObject(string id)
         {
             Poolable createdObject = _factory.CreateObject(id);
 
             if (createdObject != null)
-            {
-                if (_freeUseObjects.ContainsKey(id))
-                    _freeUseObjects[id].Push(createdObject);
-            }
+                return createdObject;
+
+            throw new NullReferenceException("Cant create new object on pool");
         }
     
         

@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 3141862245785404600}
   _enemyMember: {fileID: 8986318435948638448}
+  _health: {fileID: 7627090859473493666}
 --- !u!114 &8986318435948638448
 MonoBehaviour:
   m_ObjectHideFlags: 0

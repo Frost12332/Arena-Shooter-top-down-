@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.GameLogic.Enemy.Group;
+using Assets.Scripts.GameLogic.FireballBehaviour;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +9,7 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
     {
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private EnemyMember _enemyMember;
+        [SerializeField] private Health _health;
         
         private EnemyGroup _assignedGroup;
 
@@ -18,6 +20,7 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
             {
                 _agent.Warp(npcActivationData.Position);
                 _assignedGroup = npcActivationData.EnemyGroup;
+                _health.Arise();
 
                 if (_assignedGroup != null)
                 {
