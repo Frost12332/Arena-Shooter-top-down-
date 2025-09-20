@@ -1,4 +1,4 @@
-using Assets.Scripts.GameLogic.Enemy;
+using Assets.Scripts.GameLogic.Enemy.BehaviourStrategies;
 using UnityEngine;
 
 namespace Assets.Scripts.GameLogic.Player

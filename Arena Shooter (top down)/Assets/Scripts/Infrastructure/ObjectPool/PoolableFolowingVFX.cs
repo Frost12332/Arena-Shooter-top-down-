@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.GameLogic.Enemy;
+﻿using Assets.Scripts.GameLogic.Enemy.BehaviourStrategies;
 using Assets.Scripts.GameLogic.Enemy.Group;
 using System;
 using UnityEngine;

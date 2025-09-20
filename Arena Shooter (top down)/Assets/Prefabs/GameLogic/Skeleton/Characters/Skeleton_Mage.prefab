@@ -201,7 +201,7 @@ PrefabInstance:
       addedObject: {fileID: -2372660290314446523}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5558720779423758939}
+      addedObject: {fileID: 229660319289925175}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8144239167078930589}
@@ -295,7 +295,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5558720779423758939
+--- !u!114 &229660319289925175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9022311727758688951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44ba10b33dfff484293da5d435765540, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d822f5757b303a4095cf909f3642224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 5608369339011550032}
@@ -366,7 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spellAtackTemplate: {fileID: 11400000, guid: 9e3793488be6cb14bb03aa0543f9317b, type: 2}
   _spellAtackStartPosition: {fileID: 7687820898751206203}
-  _enemyMageAnimator: {fileID: 5558720779423758939}
+  _enemyMageAnimator: {fileID: 229660319289925175}
 --- !u!114 &7498038951615621818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6839f1c0786eb144e8f1cfa3878dfba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyMageAnimator: {fileID: 5558720779423758939}
+  _enemyMageAnimator: {fileID: 229660319289925175}
   _enemyGroup: {fileID: 403332108534608278}
   _spawnCenter: {fileID: 8933028626661220741}
   _radius: 3.5
@@ -398,7 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyGroup: {fileID: 403332108534608278}
   _healVFX: {fileID: 11400000, guid: ff3b6017af102634d834d6bde145a81b, type: 2}
-  _enemyMageAnimator: {fileID: 5558720779423758939}
+  _enemyMageAnimator: {fileID: 229660319289925175}
   _maxTimeForHealing: 5
   _tickInterval: 0.25
   _healAmountInSeconds: 5

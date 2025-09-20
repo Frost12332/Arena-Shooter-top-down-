@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
+namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage
 {
-    public class EnemyMageAnimator : MonoBehaviour, IEnemyAnimator
+    public class MageAnimator : MonoBehaviour, IMoveAnimator
     {
         private const float _stopSpeed = 0.0f;
 
@@ -72,6 +72,10 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
             _animator.SetBool(Heal, false);
         }
 
+
+
+        /*this need update*/
+
         public void PlayHit()
         {
             _animator.SetTrigger(Hit);
@@ -79,8 +83,13 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
 
         public void PlayDie()
         {
-            _animator.SetTrigger(Die);
+            _animator.SetBool(Die, true);
         }
+
+        /*this need update*/
+
+
+
 
 
         /*this is ANIMATION EVENT look at animation on Animator*/
@@ -98,7 +107,7 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol
 
 
         /*this event raise from StateMachineBehaviour which attach to animation on Animator*/
-        
+
         public void CallSpellCastShootEndEvent() =>
             OnSpellCastShootEnd?.Invoke();
 

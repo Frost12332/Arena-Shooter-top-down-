@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Scripts.GameLogic.Enemy
+namespace Assets.Scripts.GameLogic.Enemy.BehaviourStrategies
 {
     public interface IBuffVFXController
     {

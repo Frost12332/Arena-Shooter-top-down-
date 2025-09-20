@@ -8,13 +8,13 @@ namespace Assets.Scripts.GameLogic.Enemy
     {
         private const float _minimalVelocity = 0.1f;
 
-        private IEnemyAnimator _animator;
+        private IMoveAnimator _animator;
 
         [SerializeField] private NavMeshAgent _agent;
 
         private void Awake()
         {
-            _animator = GetComponent<IEnemyAnimator>();
+            _animator = GetComponent<IMoveAnimator>();
 
             if (_animator == null)
                 throw new System.NullReferenceException($"IEnemyAnimator is null on: {gameObject.name}");

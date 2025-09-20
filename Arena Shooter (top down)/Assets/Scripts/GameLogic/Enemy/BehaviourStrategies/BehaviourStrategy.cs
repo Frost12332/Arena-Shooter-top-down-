@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts.GameLogic.Enemy
+namespace Assets.Scripts.GameLogic.Enemy.BehaviourStrategies
 {
     public abstract class BehaviourStrategy : MonoBehaviour
     {
@@ -45,7 +45,7 @@ namespace Assets.Scripts.GameLogic.Enemy
             OnInterrupted();
         }
 
-       
+
 
         protected abstract IEnumerator ExecuteBehavior();
 

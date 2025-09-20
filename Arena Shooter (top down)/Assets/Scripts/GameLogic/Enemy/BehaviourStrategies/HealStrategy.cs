@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Config;
-using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol;
+using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage;
 using Assets.Scripts.GameLogic.Enemy.Group;
 using Assets.Scripts.Infrastructure.ObjectPool;
 using System;
@@ -10,7 +10,7 @@ using UnityEditor.Searcher;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.GameLogic.Enemy
+namespace Assets.Scripts.GameLogic.Enemy.BehaviourStrategies
 {
     public class HealStrategy : BehaviourStrategy, IBuffVFXController
     {
@@ -18,7 +18,7 @@ namespace Assets.Scripts.GameLogic.Enemy
 
         [SerializeField] private EnemyGroup _enemyGroup;
         [SerializeField] private PoolObjectTemplate _healVFX;
-        [SerializeField] private EnemyMageAnimator _enemyMageAnimator;
+        [SerializeField] private MageAnimator _enemyMageAnimator;
 
 
         [SerializeField] private float _maxTimeForHealing = 5.0f;

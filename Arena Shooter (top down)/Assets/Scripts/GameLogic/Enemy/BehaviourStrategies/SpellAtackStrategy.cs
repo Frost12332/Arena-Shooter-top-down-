@@ -1,18 +1,18 @@
 ﻿using Assets.Scripts.Config;
-using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol;
+using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage;
 using Assets.Scripts.GameLogic.FireballBehaviour;
 using Assets.Scripts.Infrastructure.ObjectPool;
 using System.Collections;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.GameLogic.Enemy
+namespace Assets.Scripts.GameLogic.Enemy.BehaviourStrategies
 {
     public class SpellAtackStrategy : BehaviourStrategy
     {
         [SerializeField] private PoolObjectTemplate _spellAtackTemplate;
         [SerializeField] private GameObject _spellAtackStartPosition;
-        [SerializeField] private EnemyMageAnimator _enemyMageAnimator;
+        [SerializeField] private MageAnimator _enemyMageAnimator;
 
         private IGameObjectPool _gameObjectPool;
 

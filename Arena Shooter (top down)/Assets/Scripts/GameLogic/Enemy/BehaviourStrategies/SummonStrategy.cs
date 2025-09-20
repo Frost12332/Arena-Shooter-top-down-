@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Config;
-using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol;
+using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage;
 using Assets.Scripts.GameLogic.Enemy.Group;
 using Assets.Scripts.Infrastructure.ObjectPool;
 using System.Collections;
@@ -8,11 +8,11 @@ using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
-namespace Assets.Scripts.GameLogic.Enemy
+namespace Assets.Scripts.GameLogic.Enemy.BehaviourStrategies
 {
     public class SummonStrategy : BehaviourStrategy
     {
-        [SerializeField] private EnemyMageAnimator _enemyMageAnimator;
+        [SerializeField] private MageAnimator _enemyMageAnimator;
         [SerializeField] private EnemyGroup _enemyGroup;
 
         [SerializeField] private Transform _spawnCenter;
@@ -78,8 +78,8 @@ namespace Assets.Scripts.GameLogic.Enemy
 
             for (int i = 0; i < count; i++)
             {
-                float angle = angleStep * i + UnityEngine.Random.Range(-angleStep * 0.3f, angleStep * 0.3f);
-                float distance = UnityEngine.Random.Range(radius * 0.5f, radius);
+                float angle = angleStep * i + Random.Range(-angleStep * 0.3f, angleStep * 0.3f);
+                float distance = Random.Range(radius * 0.5f, radius);
 
                 float x = Mathf.Cos(angle * Mathf.Deg2Rad) * distance;
                 float z = Mathf.Sin(angle * Mathf.Deg2Rad) * distance;
