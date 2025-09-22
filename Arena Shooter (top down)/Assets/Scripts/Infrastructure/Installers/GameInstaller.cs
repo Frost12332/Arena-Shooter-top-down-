@@ -36,6 +36,10 @@ namespace Assets.Scripts.Infrastructure.Installers
 
             Container.Bind<PoolObjectCollection>().FromInstance(_poolObjectCollection).AsSingle();
 
+
+
+            Container.Bind<IInputService>().To<StandaloneInputService>().FromNew().AsSingle();
+
         }
 
         private void NewMethod()

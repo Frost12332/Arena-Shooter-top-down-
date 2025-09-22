@@ -102,9 +102,6 @@ PrefabInstance:
       addedObject: {fileID: 7052856621074805231}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7627552613526941563}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 5654011242626945487}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
       insertIndex: -1
@@ -115,6 +112,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4593839124945576409}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762506284222635739}
   m_SourcePrefab: {fileID: 100100000, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
 --- !u!4 &2783307235044372033 stripped
 Transform:
@@ -161,22 +161,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 4811435561857230323}
---- !u!114 &7627552613526941563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3308909340847011067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60c7f6cb5455e0546a028d5117ed151d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _characterController: {fileID: 5654011242626945487}
-  _playerCamera: {fileID: 0}
-  _moveSpeed: 5
-  _rotationSpeed: 20
 --- !u!143 &5654011242626945487
 CharacterController:
   m_ObjectHideFlags: 0
@@ -244,3 +228,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthPoints: 100
   _maxHealthPoints: 200
+--- !u!114 &1762506284222635739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3308909340847011067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7514be58afaba924fa333cc4baac746f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterController: {fileID: 5654011242626945487}
+  _playerCamera: {fileID: 0}
+  _moveSpeed: 5
+  _rotationSpeed: 20

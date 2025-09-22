@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage
 {
-    public class MageAnimator : MonoBehaviour, IMoveAnimator
+    public class MageAnimator : MonoBehaviour, IMoveAnimator, ISpellCastShootAnimator, 
+        ISpellCastSummonAnimator, ISpellCastHealAnimator
     {
         private const float _stopSpeed = 0.0f;
 
@@ -21,7 +22,6 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage
         /*Animation Event*/
         public event Action OnSpellCastShoot;
         public event Action OnSpellCastSummon;
-        public event Action OnSpellCastHeal;/*unused*/
         /*Animation Event*/
 
         /*StateMachineBehaviour*/
