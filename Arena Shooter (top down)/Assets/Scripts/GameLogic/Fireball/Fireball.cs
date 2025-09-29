@@ -36,7 +36,6 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
             if (Vector3.Distance(startPosition, transform.position) > maxFlyingDistance)
             {
                 OnReleased?.Invoke();
-                //Destroy(gameObject);
             }
         }
 
@@ -44,16 +43,12 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
         {
             OnReleased?.Invoke();
 
+            Health health = other.GetComponent<Health>();
 
-            //var health = other.GetComponent<Health>();
-            //if (health != null)
-            //    health.TakeDamage(damage);
+            if (health != null)
+                health.TakeDamage(damage);
 
-            //if (hitVFX != null)
-            //    Instantiate(hitVFX, transform.position, Quaternion.identity);
-
-            //Destroy(gameObject);
-
+            OnReleased?.Invoke();
         }
     }
 }

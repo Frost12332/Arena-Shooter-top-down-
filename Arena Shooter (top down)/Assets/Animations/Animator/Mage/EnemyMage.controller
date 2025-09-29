@@ -77,7 +77,7 @@ AnimatorState:
   - {fileID: -2091388907674221718}
   - {fileID: -1791879650548099183}
   m_StateMachineBehaviours:
-  - {fileID: 4208583306543912834}
+  - {fileID: 5334232259596463796}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -468,7 +468,7 @@ AnimatorState:
   - {fileID: 7914456864790120145}
   - {fileID: -2668364167490532181}
   m_StateMachineBehaviours:
-  - {fileID: -2974909244125398852}
+  - {fileID: 6212187251508593165}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -735,6 +735,18 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &5334232259596463796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4edb861cbc4c3b43b5b777a6b1b4421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1101 &5645259043032887531
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -760,6 +772,30 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &5719544427661097894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f851fcb6c0337c74da05237616f40a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6212187251508593165
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff19b8005517684fba3af96e25a7823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1102 &6461517565190295751
 AnimatorState:
   serializedVersion: 6
@@ -853,7 +889,7 @@ AnimatorState:
   - {fileID: -1163065588550982668}
   - {fileID: -474937772170902371}
   m_StateMachineBehaviours:
-  - {fileID: 3471162934631733939}
+  - {fileID: 5719544427661097894}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

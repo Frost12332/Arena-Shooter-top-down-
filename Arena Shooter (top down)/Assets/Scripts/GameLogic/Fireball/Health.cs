@@ -50,5 +50,10 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
 
         public bool IsNeedHealing() =>
             _healthPoints < _maxHealthPoints && _isAlive;
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            Debug.Log("Detect collision");
+        }
     }
 }

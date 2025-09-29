@@ -115,6 +115,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1762506284222635739}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4292146985288954861}
   m_SourcePrefab: {fileID: 100100000, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
 --- !u!4 &2783307235044372033 stripped
 Transform:
@@ -208,7 +211,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3308909340847011067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24fd022a19c834149a8d19c0ff785bed, type: 3}
+  m_Script: {fileID: 11500000, guid: d11384a75e16ca04384f178c83622461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _spellAtackTemplate: {fileID: 11400000, guid: 9e3793488be6cb14bb03aa0543f9317b, type: 2}
@@ -241,6 +244,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 5654011242626945487}
-  _playerCamera: {fileID: 0}
   _moveSpeed: 5
   _rotationSpeed: 20
+--- !u!114 &4292146985288954861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3308909340847011067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae50e667f780af4da3d5bf9614176ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterController: {fileID: 5654011242626945487}

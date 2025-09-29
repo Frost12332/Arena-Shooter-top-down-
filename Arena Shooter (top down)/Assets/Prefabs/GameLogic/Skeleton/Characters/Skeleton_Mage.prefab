@@ -216,10 +216,10 @@ PrefabInstance:
       addedObject: {fileID: 7909918009021062444}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7498038951615621818}
+      addedObject: {fileID: 5362763172231883319}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9184608041044912550}
+      addedObject: {fileID: 3927528455675584522}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2485758662701258321}
@@ -235,6 +235,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8878420526065915309}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 954898654222015620}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -702617500221009613}
   m_SourcePrefab: {fileID: 100100000, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
 --- !u!4 &7220459855728282504 stripped
 Transform:
@@ -349,9 +355,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _strategies:
-  - {fileID: 9184608041044912550}
-  - {fileID: 7498038951615621818}
   - {fileID: 7909918009021062444}
+  - {fileID: 3927528455675584522}
+  - {fileID: 5362763172231883319}
 --- !u!114 &7909918009021062444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,39 +367,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9022311727758688951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24fd022a19c834149a8d19c0ff785bed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spellAtackTemplate: {fileID: 11400000, guid: 9e3793488be6cb14bb03aa0543f9317b, type: 2}
-  _spellAtackStartPosition: {fileID: 7687820898751206203}
-  _enemyMageAnimator: {fileID: 229660319289925175}
---- !u!114 &7498038951615621818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9022311727758688951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6839f1c0786eb144e8f1cfa3878dfba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyMageAnimator: {fileID: 229660319289925175}
-  _enemyGroup: {fileID: 403332108534608278}
-  _spawnCenter: {fileID: 8933028626661220741}
-  _radius: 3.5
-  _summonObjectTemplate: {fileID: 11400000, guid: a68b9c87fc030bb4bb0c9e6564ccb239, type: 2}
---- !u!114 &9184608041044912550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9022311727758688951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a7fb665f7a434344b11c51fdba56685, type: 3}
+  m_Script: {fileID: 11500000, guid: 2802670ab2b8b554dba6b6aa3a14559a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyGroup: {fileID: 403332108534608278}
@@ -402,6 +376,38 @@ MonoBehaviour:
   _maxTimeForHealing: 5
   _tickInterval: 0.25
   _healAmountInSeconds: 5
+--- !u!114 &5362763172231883319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022311727758688951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11384a75e16ca04384f178c83622461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spellAtackTemplate: {fileID: 11400000, guid: 9e3793488be6cb14bb03aa0543f9317b, type: 2}
+  _spellAtackStartPosition: {fileID: 7687820898751206203}
+  _enemyMageAnimator: {fileID: 229660319289925175}
+--- !u!114 &3927528455675584522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022311727758688951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 295a47a5e3738a7409536a7e53e9d33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyMageAnimator: {fileID: 229660319289925175}
+  _enemyGroup: {fileID: 403332108534608278}
+  _spawnCenter: {fileID: 8933028626661220741}
+  _radius: 3
+  _summonObjectTemplate: {fileID: 11400000, guid: a68b9c87fc030bb4bb0c9e6564ccb239, type: 2}
 --- !u!114 &2485758662701258321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,3 +478,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 4789530085685029897}
+--- !u!65 &954898654222015620
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022311727758688951}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2.1047688, z: 1}
+  m_Center: {x: 0, y: 1.2376037, z: 0}
+--- !u!54 &-702617500221009613
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022311727758688951}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
