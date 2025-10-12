@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Minion
 {
-    public class MinionAnimator : MonoBehaviour, IMoveAnimator, IMeleeAtackAnimator
+    public class MinionAnimator : MonoBehaviour, IMoveAnimator, IMeleeAtackAnimator, IHitAnimator
     {
         private const float _stopSpeed = 0.0f;
 
@@ -15,25 +15,25 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Minion
         private readonly int Hit = Animator.StringToHash("Hit");
         private readonly int Die = Animator.StringToHash("Die");
 
+        /*ANIMATION EVENT*/
         public event Action OnMeleeAttack;
+        /*ANIMATION EVENT*/
+
+        /*StateMachineBehaviour*/
         public event Action OnMeleeAttackEnd;
+        //public event Action OnHitEnd;
+        /*StateMachineBehaviour*/
 
-        public void PlayMove(float speed)
-        {
+        public void PlayMove(float speed) => 
             _animator.SetFloat(Speed, speed);
-        }
 
-        public void PlayStopMove()
-        {
+        public void PlayStopMove() => 
             _animator.SetFloat(Speed, _stopSpeed);
-        }
 
 
 
-        public void PlayMeleeAttack()
-        {
+        public void PlayMeleeAttack() => 
             _animator.SetTrigger(MeleeAtack);
-        }
 
         public void MeleeAttackAnimationEvent() =>
             OnMeleeAttack?.Invoke();
@@ -43,20 +43,25 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Minion
 
 
 
-        /*this need update*/
-
-        public void PlayHit()
-        {
+        public void PlayHit() => 
             _animator.SetTrigger(Hit);
-        }
+
+        //public void CallHitEndEvent() => 
+        //    OnHitEnd?.Invoke();
+
+
+
+
+
+        /*this need update*/
 
         public void PlayDie()
         {
             _animator.SetBool(Die, true);
         }
 
-        
         /*this need update*/
+
 
 
 

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2592043598667324599}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 0.98, z: 2.12}
+  m_LocalPosition: {x: -0.08, y: 0.98, z: 3.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -118,6 +118,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4292146985288954861}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5048627230765568391}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3583343522936682356}
   m_SourcePrefab: {fileID: 100100000, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
 --- !u!4 &2783307235044372033 stripped
 Transform:
@@ -217,6 +223,8 @@ MonoBehaviour:
   _spellAtackTemplate: {fileID: 11400000, guid: 9e3793488be6cb14bb03aa0543f9317b, type: 2}
   _spellAtackStartPosition: {fileID: 2592043598667324599}
   _enemyMageAnimator: {fileID: 7052856621074805231}
+  _resourceStorage: {fileID: 5048627230765568391}
+  _cost: 5
 --- !u!114 &4593839124945576409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,3 +267,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 5654011242626945487}
+--- !u!114 &5048627230765568391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3308909340847011067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8595c3b5ec10079468023d97e63b8a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceType: 0
+  _maxCountMana: 100
+  _currentMana: 0
+--- !u!114 &3583343522936682356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3308909340847011067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db02a572ea745774fa3bd482c26ef49a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceType: 0
+  _storage: {fileID: 5048627230765568391}
+  _timeForGenerateMana: 2.5
+  _countGeneratedMana: 5

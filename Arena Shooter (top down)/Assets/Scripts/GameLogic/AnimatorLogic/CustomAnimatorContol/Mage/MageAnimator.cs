@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage
 {
     public class MageAnimator : MonoBehaviour, IMoveAnimator, ISpellCastShootAnimator, 
-        ISpellCastSummonAnimator, ISpellCastHealAnimator
+        ISpellCastSummonAnimator, ISpellCastHealAnimator, IHitAnimator
     {
         private const float _stopSpeed = 0.0f;
 
@@ -29,12 +29,8 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage
         public event Action OnSpellCastShootEnd;
         public event Action OnSpellCastSummonEnd;
         public event Action OnSpellCastHealEnd;
+        //public event Action OnHitEnd;
         /*StateMachineBehaviour*/
-
-
-
-        public event Action OnAnimationHit;
-
 
 
 
@@ -68,19 +64,21 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage
             _animator.SetBool(Heal, true);
         }
 
-        public void StopPlayeHeal()
+        public void StopPlayHeal()
         {
             _animator.SetBool(Heal, false);
         }
-
-
-
-        /*this need update*/
 
         public void PlayHit()
         {
             _animator.SetTrigger(Hit);
         }
+
+
+
+
+        /*this need update*/
+
 
         public void PlayDie()
         {
@@ -117,9 +115,12 @@ namespace Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage
 
         public void CallSpellCastHealEndEvent()
         {
-            StopPlayeHeal();
+            StopPlayHeal();
             OnSpellCastHealEnd?.Invoke();
         }
+
+        //public void CallHitEndEvent() => 
+        //    OnHitEnd?.Invoke();
 
 
 

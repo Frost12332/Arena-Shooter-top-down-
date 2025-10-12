@@ -12,5 +12,6 @@ namespace Assets.Scripts.GameLogic.AnimatorLogic.AnimatorContracts
         public void MeleeAttackAnimationEvent();
 
         public void MeleeAttackEndEvent();
+        void PlayStopMove();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Config;
 using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage;
 using Assets.Scripts.GameLogic.Enemy.Group;
+using Assets.Scripts.GameLogic.GameResource;
 using Assets.Scripts.Infrastructure.ObjectPool;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,6 +22,10 @@ namespace Assets.Scripts.GameLogic.Enemy.AI.Behaviours
         [SerializeField] private PoolObjectTemplate _summonObjectTemplate;
         private IGameObjectPool _gameObjectPool;
 
+        [SerializeField] private float _cost = 10.0f;/*how much cost summon 1 character*/
+
+        [SerializeField] private ResourceStorage _resourceStorage;
+
         [Inject]
         private void Construct(IGameObjectPool pool)
         {
@@ -35,7 +40,7 @@ namespace Assets.Scripts.GameLogic.Enemy.AI.Behaviours
 
         public override bool CanExecute()
         {
-            return _enemyGroup.HasFreeMembership();
+            return _enemyGroup.HasFreeMembership() && _resourceStorage.HasEnough(_cost);
         }
 
         protected override IEnumerator ExecuteBehavior()
@@ -62,12 +67,15 @@ namespace Assets.Scripts.GameLogic.Enemy.AI.Behaviours
 
             foreach (Vector3 point in GetSpawnPoints(_spawnCenter.position, _radius, countSummonCharacter))
             {
-                /*_summonObjectTemplate this must be prefab which include character and VFX for simplest
-                 first working VFX then showing character, and after this character attack*/
-                Poolable spawnedCharacter = _gameObjectPool.GetObject(_summonObjectTemplate.Id);
-                NPCActivationData npcActivationData = new NPCActivationData(point, _enemyGroup);
+                if (_resourceStorage.TrySpend(_cost))
+                {
+                    /*_summonObjectTemplate this must be prefab which include character and VFX for simplest
+                     first working VFX then showing character, and after this character attack*/
+                    Poolable spawnedCharacter = _gameObjectPool.GetObject(_summonObjectTemplate.Id);
+                    NPCActivationData npcActivationData = new NPCActivationData(point, _enemyGroup);
 
-                spawnedCharacter.Activate(npcActivationData);
+                    spawnedCharacter.Activate(npcActivationData);
+                }
             }
         }
 

@@ -10,7 +10,7 @@ namespace Assets.Scripts.GameLogic.AnimatorLogic.AnimatorContracts.Behaviour
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             if (animatorController == null)
-                animatorController = animator.GetComponent<MageAnimator>();
+                animatorController = animator.GetComponent<ISpellCastShootAnimator>();
 
             animatorController.CallSpellCastShootEndEvent();
         }

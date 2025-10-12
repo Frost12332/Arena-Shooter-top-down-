@@ -26,4 +26,5 @@ namespace Assets.Scripts.GameLogic
             _enemySpawner.SpawnWave(_spawnConfig.EnemiesPerWave);
         }
     }
+
 }

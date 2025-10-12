@@ -537,6 +537,18 @@ BlendTree:
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 0
+--- !u!114 &2139078892765921429
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d053b65f73ad1a4bbde4c22b07c1686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2304907014151946526
 MonoBehaviour:
   m_ObjectHideFlags: 1

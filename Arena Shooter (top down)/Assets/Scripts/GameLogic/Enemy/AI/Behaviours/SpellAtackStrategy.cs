@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Config;
 using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage;
 using Assets.Scripts.GameLogic.FireballBehaviour;
+using Assets.Scripts.GameLogic.GameResource;
 using Assets.Scripts.Infrastructure.ObjectPool;
 using System.Collections;
 using UnityEngine;
@@ -13,6 +14,9 @@ namespace Assets.Scripts.GameLogic.Enemy.AI.Behaviours
         [SerializeField] private PoolObjectTemplate _spellAtackTemplate;
         [SerializeField] private GameObject _spellAtackStartPosition;
         [SerializeField] private MageAnimator _enemyMageAnimator;
+
+        [SerializeField] private ResourceStorage _resourceStorage;
+        [SerializeField] private float _cost = 5.0f;
 
         private IGameObjectPool _gameObjectPool;
 
@@ -29,29 +33,32 @@ namespace Assets.Scripts.GameLogic.Enemy.AI.Behaviours
 
         public override bool CanExecute()
         {
-            return true;//TODO: is have enough mana
+            return _resourceStorage.HasEnough(_cost);
         }
 
         protected override IEnumerator ExecuteBehavior()
         {
-            _enemyMageAnimator.PlaySpellCastShoot();
-
-
-
-            bool animationEnd = false;
-
-            void OnAnimationEnd()
+            if (_resourceStorage.TrySpend(_cost))
             {
-                animationEnd = true;
+                _enemyMageAnimator.PlaySpellCastShoot();
+
+
+
+                bool animationEnd = false;
+
+                void OnAnimationEnd()
+                {
+                    animationEnd = true;
+                }
+
+
+
+                _enemyMageAnimator.OnSpellCastShootEnd += OnAnimationEnd;
+
+                yield return new WaitUntil(() => animationEnd);
+
+                _enemyMageAnimator.OnSpellCastShootEnd -= OnAnimationEnd;
             }
-
-
-
-            _enemyMageAnimator.OnSpellCastShootEnd += OnAnimationEnd;
-
-            yield return new WaitUntil(() => animationEnd);
-
-            _enemyMageAnimator.OnSpellCastShootEnd -= OnAnimationEnd;
         }
 
         private void SpellCasting()

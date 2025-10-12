@@ -1,7 +1,9 @@
 ﻿using Assets.Scripts.Config;
+using Assets.Scripts.GameLogic.AnimatorLogic.AnimatorContracts;
 using Assets.Scripts.GameLogic.Enemy.BehaviourStrategies;
 using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage;
 using Assets.Scripts.GameLogic.Enemy.Group;
+using Assets.Scripts.GameLogic.GameResource;
 using Assets.Scripts.Infrastructure.ObjectPool;
 using System;
 using System.Collections;
@@ -19,12 +21,19 @@ namespace Assets.Scripts.GameLogic.Enemy.AI.Behaviours
 
         [SerializeField] private EnemyGroup _enemyGroup;
         [SerializeField] private PoolObjectTemplate _healVFX;
-        [SerializeField] private MageAnimator _enemyMageAnimator;
+        [SerializeField] private ISpellCastHealAnimator _healAnimator;
 
 
         [SerializeField] private float _maxTimeForHealing = 5.0f;
         [SerializeField] private float _tickInterval = 0.25f;
         [SerializeField] private int _healAmountInSeconds = 5;
+        
+        
+        [SerializeField] private ResourceStorage _resourceStorage;
+        [SerializeField] private float _cost = 7.5f;
+        
+        
+        
         private float _currentHealTime;
         private float _healTickAcumulator;
 
@@ -36,20 +45,26 @@ namespace Assets.Scripts.GameLogic.Enemy.AI.Behaviours
         public event Action<GameObject> DeactivateBuffVFX;
         public event Action ReleaseBuffVFX;
 
+
         [Inject]
         private void Construct(IGameObjectPool pool)
         {
             _gameObjectPool = pool;
         }
 
+        private void Start()
+        {
+            _healAnimator = GetComponent<ISpellCastHealAnimator>();
+        }
+
         public override bool CanExecute()
         {
-            return _enemyGroup.Search(IsNeedHeal).Any();
+            return _enemyGroup.Search(IsNeedHeal).Any() && _resourceStorage.HasEnough(_cost);
         }
 
         protected override IEnumerator ExecuteBehavior()
         {
-            _enemyMageAnimator.StartPlayHeal();
+            _healAnimator.StartPlayHeal();
 
             _animationInterrupt = false;
             _currentHealTime = 0;
@@ -59,15 +74,15 @@ namespace Assets.Scripts.GameLogic.Enemy.AI.Behaviours
                 _animationInterrupt = true;
             }
 
-            _enemyMageAnimator.OnSpellCastHealEnd += OnAnimationInterupt;
+            _healAnimator.OnSpellCastHealEnd += OnAnimationInterupt;
 
 
             yield return Healing();
 
 
-            _enemyMageAnimator.OnSpellCastHealEnd -= OnAnimationInterupt;
+            _healAnimator.OnSpellCastHealEnd -= OnAnimationInterupt;
 
-            _enemyMageAnimator.StopPlayeHeal();
+            _healAnimator.StopPlayHeal();
         }
 
         private IEnumerator Healing()
@@ -83,11 +98,11 @@ namespace Assets.Scripts.GameLogic.Enemy.AI.Behaviours
             {
                 foreach (EnemyMember heal in healGroup)
                 {
-                    if (IsNeedHeal(heal))
+                    if (IsNeedHeal(heal) && _resourceStorage.HasEnough(_cost))
                     {
                         ActivateBuffVFX?.Invoke(heal.gameObject);
 
-                        if (_healTickAcumulator >= second)/*Healing animation play longer because WaitForSecond*/
+                        if (_healTickAcumulator >= second && _resourceStorage.TrySpend(_cost))/*Healing animation play longer because WaitForSecond*/
                             heal.Health.Healing(_healAmountInSeconds);
                     }
                     else

@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.GameLogic.AnimatorLogic.AnimatorContracts;
 using Assets.Scripts.GameLogic.FireballBehaviour;
+using Assets.Scripts.GameLogic.GameResource;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -19,7 +20,8 @@ namespace Assets.Scripts.GameLogic.Enemy.AI.Behaviours
         private IPlayerController _playerController;
         private IMeleeAtackAnimator _meleeAtackAnimator;
 
-
+        [SerializeField] private ResourceStorage _resourceStorage;
+        [SerializeField] private float _cost = 5.0f;
 
         [Inject]
         private void Construct(IPlayerController playerController)
@@ -40,25 +42,29 @@ namespace Assets.Scripts.GameLogic.Enemy.AI.Behaviours
 
         public override bool CanExecute()
         {
-            return Vector3.Distance(gameObject.transform.position, _playerController.GetPlayerCharacter().transform.position) <= _attackDistance;
+            return Vector3.Distance(gameObject.transform.position, _playerController.GetPlayerCharacter().transform.position) <= _attackDistance &&
+                _resourceStorage.HasEnough(_cost);
         }
 
         protected override IEnumerator ExecuteBehavior()
         {
-            _meleeAtackAnimator.PlayMeleeAttack();
-
-            bool animationEnd = false;
-
-            void OnAnimationEnd()
+            if (_resourceStorage.TrySpend(_cost))
             {
-                animationEnd = true;
+                _meleeAtackAnimator.PlayMeleeAttack();
+
+                bool animationEnd = false;
+
+                void OnAnimationEnd()
+                {
+                    animationEnd = true;
+                }
+
+                _meleeAtackAnimator.OnMeleeAttackEnd += OnAnimationEnd;
+
+                yield return new WaitUntil(() => animationEnd);
+
+                _meleeAtackAnimator.OnMeleeAttackEnd -= OnAnimationEnd;
             }
-
-            _meleeAtackAnimator.OnMeleeAttackEnd += OnAnimationEnd;
-
-            yield return new WaitUntil(() => animationEnd);
-
-            _meleeAtackAnimator.OnMeleeAttackEnd -= OnAnimationEnd;
         }
 
 

@@ -1,5 +1,7 @@
 ﻿using Assets.Scripts.GameLogic.Enemy.Group;
 using Assets.Scripts.GameLogic.FireballBehaviour;
+using Assets.Scripts.GameLogic.GameResource;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,6 +12,7 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private EnemyMember _enemyMember;
         [SerializeField] private Health _health;
+        [SerializeField] private List<ResourceStorage> _storages;
         
         private EnemyGroup _assignedGroup;
 
@@ -21,6 +24,9 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
                 _agent.Warp(npcActivationData.Position);
                 _assignedGroup = npcActivationData.EnemyGroup;
                 _health.Arise();
+
+                foreach (ResourceStorage storage in _storages)
+                    storage.Restore();
 
                 if (_assignedGroup != null)
                 {

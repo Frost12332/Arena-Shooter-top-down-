@@ -7,6 +7,7 @@ namespace Assets.Scripts.GameLogic.AnimatorLogic.AnimatorContracts
         public event Action OnSpellCastHealEnd;
 
         public void StartPlayHeal();
+        public void StopPlayHeal();
 
         public void CallSpellCastHealEndEvent();
     }

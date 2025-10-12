@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Infrastructure.ObjectPool;
+﻿using Assets.Scripts.GameLogic.AnimatorLogic.AnimatorContracts;
+using Assets.Scripts.Infrastructure.ObjectPool;
 using System;
 using UnityEngine;
 
@@ -9,9 +10,18 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
         [SerializeField] private int _healthPoints;
         [SerializeField] private int _maxHealthPoints;
 
+        private IHitAnimator _hitAnimator;
+
         private bool _isAlive = true;
 
         public event Action OnReleased;
+
+
+        private void Start()
+        {
+            _hitAnimator = GetComponent<IHitAnimator>();
+        }
+
 
         public void Arise()
         {
@@ -29,6 +39,8 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
 
         public void TakeDamage(int damage)
         {
+            _hitAnimator.PlayHit();
+
             _healthPoints -= damage;
 
             if (_healthPoints <= 0)

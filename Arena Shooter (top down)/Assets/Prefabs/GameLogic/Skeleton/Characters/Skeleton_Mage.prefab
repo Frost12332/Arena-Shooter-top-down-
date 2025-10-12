@@ -241,6 +241,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
       insertIndex: -1
       addedObject: {fileID: -702617500221009613}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4550612253803395210}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2359559430181321764}
   m_SourcePrefab: {fileID: 100100000, guid: 639144b0f4e7c384bb88fa42bcc7b468, type: 3}
 --- !u!4 &7220459855728282504 stripped
 Transform:
@@ -372,10 +378,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyGroup: {fileID: 403332108534608278}
   _healVFX: {fileID: 11400000, guid: ff3b6017af102634d834d6bde145a81b, type: 2}
-  _enemyMageAnimator: {fileID: 229660319289925175}
   _maxTimeForHealing: 5
   _tickInterval: 0.25
   _healAmountInSeconds: 5
+  _resourceStorage: {fileID: 4550612253803395210}
+  _cost: 7.5
 --- !u!114 &5362763172231883319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +398,8 @@ MonoBehaviour:
   _spellAtackTemplate: {fileID: 11400000, guid: 9e3793488be6cb14bb03aa0543f9317b, type: 2}
   _spellAtackStartPosition: {fileID: 7687820898751206203}
   _enemyMageAnimator: {fileID: 229660319289925175}
+  _resourceStorage: {fileID: 4550612253803395210}
+  _cost: 5
 --- !u!114 &3927528455675584522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,6 +417,8 @@ MonoBehaviour:
   _spawnCenter: {fileID: 8933028626661220741}
   _radius: 3
   _summonObjectTemplate: {fileID: 11400000, guid: a68b9c87fc030bb4bb0c9e6564ccb239, type: 2}
+  _cost: 10
+  _resourceStorage: {fileID: 4550612253803395210}
 --- !u!114 &2485758662701258321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,6 +461,8 @@ MonoBehaviour:
   _agent: {fileID: -2372660290314446523}
   _enemyMember: {fileID: 8878420526065915309}
   _health: {fileID: 4789530085685029897}
+  _storages:
+  - {fileID: 4550612253803395210}
 --- !u!114 &403332108534608278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,3 +539,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4550612253803395210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022311727758688951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8595c3b5ec10079468023d97e63b8a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceType: 0
+  _maxCountMana: 100
+  _currentMana: 0
+--- !u!114 &2359559430181321764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022311727758688951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db02a572ea745774fa3bd482c26ef49a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceType: 0
+  _storage: {fileID: 4550612253803395210}
+  _timeForGenerateMana: 2.5
+  _countGeneratedMana: 5
