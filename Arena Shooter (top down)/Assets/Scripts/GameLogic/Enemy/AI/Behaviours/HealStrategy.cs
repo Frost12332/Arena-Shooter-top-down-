@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Config;
+﻿using Assets.Scripts.Config.Pool;
 using Assets.Scripts.GameLogic.AnimatorLogic.AnimatorContracts;
 using Assets.Scripts.GameLogic.Enemy.BehaviourStrategies;
 using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage;

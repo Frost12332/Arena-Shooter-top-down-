@@ -1,4 +1,4 @@
-using Assets.Scripts.Config;
+using Assets.Scripts.Config.Pool;
 using Assets.Scripts.Infrastructure.ObjectPool;
 using UnityEngine;
 using Zenject;

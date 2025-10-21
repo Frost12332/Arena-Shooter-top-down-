@@ -1054,7 +1054,10 @@ MonoBehaviour:
   _waveControllerPrefab: {fileID: 307066248455459392, guid: bfb2804fe5eccc341bfbaea8417dc393, type: 3}
   _gameConfig: {fileID: 11400000, guid: 4b70b3b787e8bdf409375f77f5205168, type: 2}
   _spawnerConfig: {fileID: 11400000, guid: d6a0f9ba96558054f887df304acf2b55, type: 2}
+  _waveConfig: {fileID: 11400000, guid: 2b85ad6535adf0349886071315f022a0, type: 2}
   _poolObjectCollection: {fileID: 11400000, guid: ae8b127160831474b8051bff2b17724b, type: 2}
+  _enemyPoolObjectCollection: {fileID: 11400000, guid: 9205f4d84b77c9547968d909c2331336, type: 2}
+  _phantomPoolObjectCollection: {fileID: 11400000, guid: 64d40fcdad4ef1d45aced9ab38684545, type: 2}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

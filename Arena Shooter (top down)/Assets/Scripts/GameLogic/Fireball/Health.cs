@@ -7,8 +7,8 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
 {
     public class Health : MonoBehaviour, IReleasable
     {
-        [SerializeField] private int _healthPoints;
-        [SerializeField] private int _maxHealthPoints;
+        [SerializeField] protected int _healthPoints;
+        [SerializeField] protected int _maxHealthPoints;
 
         private IHitAnimator _hitAnimator;
 
@@ -53,7 +53,7 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
             Die();
         }
 
-        private void Die()
+        protected virtual void Die()
         {
             _isAlive = false;
             OnReleased?.Invoke();

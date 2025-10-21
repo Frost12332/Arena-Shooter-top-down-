@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f31b4176fb09ca44b2b40333f18847d, type: 3}
+  m_Script: {fileID: 11500000, guid: e4924fad534996946ac51a26f5cb0b13, type: 3}
   m_Name: PoolCollection
   m_EditorClassIdentifier: 
   _poolCollection:
+  - {fileID: 11400000, guid: d4fe244ef79b4c646b3fb41dc84ee4eb, type: 2}
+  - {fileID: 11400000, guid: 3d9eda22050b85a49b59c1c26b2225a2, type: 2}
   - {fileID: 11400000, guid: 308ae121d9b3acb4da1e5ab0a13d8fbe, type: 2}
   - {fileID: 11400000, guid: a68b9c87fc030bb4bb0c9e6564ccb239, type: 2}
   - {fileID: 11400000, guid: 8d7cb552480677847b5e8d50d7cd5730, type: 2}
   - {fileID: 11400000, guid: 4476dbed6ecc89249a42a0b221193c1a, type: 2}
   - {fileID: 11400000, guid: 9e3793488be6cb14bb03aa0543f9317b, type: 2}
-  - {fileID: 11400000, guid: ff3b6017af102634d834d6bde145a81b, type: 2}

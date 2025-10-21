@@ -111,9 +111,6 @@ PrefabInstance:
       addedObject: {fileID: 4759492183907876176}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4593839124945576409}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1762506284222635739}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
       insertIndex: -1
@@ -124,6 +121,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3583343522936682356}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5708454118476690179}
   m_SourcePrefab: {fileID: 100100000, guid: e542d2cae43395d418620fd98fbd2e84, type: 3}
 --- !u!4 &2783307235044372033 stripped
 Transform:
@@ -225,20 +225,6 @@ MonoBehaviour:
   _enemyMageAnimator: {fileID: 7052856621074805231}
   _resourceStorage: {fileID: 5048627230765568391}
   _cost: 5
---- !u!114 &4593839124945576409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3308909340847011067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc83a21ba5be86147a450f2ab74b2140, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthPoints: 100
-  _maxHealthPoints: 200
 --- !u!114 &1762506284222635739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,3 +284,17 @@ MonoBehaviour:
   _storage: {fileID: 5048627230765568391}
   _timeForGenerateMana: 2.5
   _countGeneratedMana: 5
+--- !u!114 &5708454118476690179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3308909340847011067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d32eae99ca1744aacd1c9453b36753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthPoints: 50
+  _maxHealthPoints: 200

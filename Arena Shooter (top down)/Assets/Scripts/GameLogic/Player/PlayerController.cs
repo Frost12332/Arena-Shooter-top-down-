@@ -1,3 +1,4 @@
+using Assets.Scripts.GameLogic.GameEventBus;
 using UnityEngine;
 using Zenject;
 
@@ -8,8 +9,7 @@ namespace Assets.Scripts.GameLogic
         [SerializeField] private CharacterController _characterController;
 
         private IInputService _inputService;
-
-
+        
         [SerializeField] private float _moveSpeed = 5f;
         [SerializeField] private float _rotationSpeed = 20f;
 
@@ -19,6 +19,7 @@ namespace Assets.Scripts.GameLogic
         private void Construct(IInputService inputService)
         {
             _inputService = inputService;
+            Debug.LogWarning("Character created");
         }
 
         void Update()
@@ -34,8 +35,6 @@ namespace Assets.Scripts.GameLogic
             _characterController.Move(_movement * _moveSpeed * Time.deltaTime);
 
             RotateCharacter();
-
-
         }
 
         public GameObject GetPlayerCharacter()

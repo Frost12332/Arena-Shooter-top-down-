@@ -1,4 +1,4 @@
-using Assets.Scripts.Config;
+using Assets.Scripts.Config.Pool;
 using Assets.Scripts.Infrastructure.Factory;
 using System;
 using System.Collections.Generic;

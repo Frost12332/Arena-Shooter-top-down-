@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Config;
+﻿using Assets.Scripts.Config.Pool;
 using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage;
 using Assets.Scripts.GameLogic.FireballBehaviour;
 using Assets.Scripts.GameLogic.GameResource;

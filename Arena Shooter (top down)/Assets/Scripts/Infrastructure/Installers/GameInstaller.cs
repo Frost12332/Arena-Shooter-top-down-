@@ -1,5 +1,7 @@
 using Assets.Scripts.Config;
+using Assets.Scripts.Config.Pool;
 using Assets.Scripts.GameLogic;
+using Assets.Scripts.GameLogic.GameEventBus;
 using Assets.Scripts.GameUI;
 using Assets.Scripts.Infrastructure.Factory;
 using Assets.Scripts.Infrastructure.ObjectPool;
@@ -17,9 +19,12 @@ namespace Assets.Scripts.Infrastructure.Installers
 
         [SerializeField] private GameConfig _gameConfig;
         [SerializeField] private SpawnerConfig _spawnerConfig;
+        [SerializeField] private WaveConfig _waveConfig;
 
 
         [SerializeField] private PoolObjectCollection _poolObjectCollection;
+        [SerializeField] private EnemyPoolObjectCollection _enemyPoolObjectCollection;
+        [SerializeField] private PhantomPoolObjectCollection _phantomPoolObjectCollection;
 
 
 
@@ -35,11 +40,13 @@ namespace Assets.Scripts.Infrastructure.Installers
             Container.Bind<IGameObjectPool>().To<GameObjectPool>().FromNew().AsSingle();
 
             Container.Bind<PoolObjectCollection>().FromInstance(_poolObjectCollection).AsSingle();
+            Container.Bind<EnemyPoolObjectCollection>().FromInstance(_enemyPoolObjectCollection).AsSingle();
+            Container.Bind<PhantomPoolObjectCollection>().FromInstance(_phantomPoolObjectCollection).AsSingle();
 
 
 
             Container.Bind<IInputService>().To<StandaloneInputService>().FromNew().AsSingle();
-
+            Container.Bind<IEventBus>().To<EventBus>().FromNew().AsSingle();
         }
 
         private void NewMethod()
@@ -51,10 +58,11 @@ namespace Assets.Scripts.Infrastructure.Installers
             Container.Bind<IPlayerController>().To<PlayerController>().FromComponentInNewPrefab(_gameConfig.playerCharacterPrefab).AsSingle();
 
             Container.Bind<SpawnerConfig>().FromInstance(_spawnerConfig).AsSingle();
+            Container.Bind<WaveConfig>().FromInstance(_waveConfig).AsSingle();
 
             Container.Bind<IEnemySpawner>().To<EnemySpawner>().AsSingle();
 
-            Container.Bind<WaveController>().FromComponentInNewPrefab(_waveControllerPrefab).AsSingle().NonLazy();
+            Container.Bind<IWaveController>().To<WaveController>().FromComponentInNewPrefab(_waveControllerPrefab).AsSingle().NonLazy();
         }
     }
 }

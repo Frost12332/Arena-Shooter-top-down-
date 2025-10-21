@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Config
+namespace Assets.Scripts.Config.Pool
 {
     [CreateAssetMenu(fileName = "PoolObjectTemplate", menuName = "Config/PoolObject/PoolObjectTemplate")]
     public class PoolObjectTemplate : ScriptableObject

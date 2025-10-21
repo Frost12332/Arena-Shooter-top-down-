@@ -1,4 +1,5 @@
 using Assets.Scripts.Config;
+using Assets.Scripts.Config.Pool;
 using Assets.Scripts.Infrastructure.ObjectPool;
 using UnityEngine;
 using Zenject;
@@ -12,16 +13,16 @@ namespace Assets.Scripts.GameLogic
         private readonly GameObject _playerCharacter;
         private int _currentEnemyCount = 0;
 
-        private PoolObjectCollection _poolObjectCollection;
+        private PoolObjectCollection _enemyPoolObjectCollection;
         IGameObjectPool _gameObjectPool;
 
         public EnemySpawner(SpawnerConfig spawnConfig, DiContainer container, IPlayerController playerController,
-            PoolObjectCollection poolObjectCollection, IGameObjectPool gameObjectPool)
+            EnemyPoolObjectCollection enemyPoolObjectCollection, IGameObjectPool gameObjectPool)
         {
             _spawnConfig = spawnConfig;
             _container = container;
             _playerCharacter = playerController.GetPlayerCharacter();
-            _poolObjectCollection = poolObjectCollection;
+            _enemyPoolObjectCollection = enemyPoolObjectCollection;
             _gameObjectPool = gameObjectPool;
         }
 
@@ -68,28 +69,17 @@ namespace Assets.Scripts.GameLogic
 
         private void SpawnEnemy(Vector3 spawnPoint)
         {
-            PoolObjectTemplate enemyObject = GetRandomEnemy();
+            PoolObjectTemplate enemyObject = _enemyPoolObjectCollection.GetRandomPoolObject();
 
             Poolable enemyInstance = _gameObjectPool.GetObject(enemyObject.Id);
             NPCActivationData npcActivationData = new NPCActivationData(spawnPoint, null);
 
             enemyInstance.Activate(npcActivationData);
-
-            //enemyInstance.transform.position = position;
-
-            //enemyInstance.transform.Rotate(0, Random.Range(0, 360), 0);
-
         }
 
         public void OnEnemyDied()
         {
             _currentEnemyCount--;
-        }
-
-        private PoolObjectTemplate GetRandomEnemy()
-        {
-            int random_value = Random.Range(0, _poolObjectCollection.PoolCollection.Count - 1);
-            return _poolObjectCollection.PoolCollection[random_value];
         }
     }
 }

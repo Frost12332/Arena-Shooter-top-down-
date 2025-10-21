@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Config;
+﻿using Assets.Scripts.Config.Pool;
 using Assets.Scripts.GameLogic.Enemy.CustomAnimatorContol.Mage;
 using Assets.Scripts.GameLogic.Enemy.Group;
 using Assets.Scripts.GameLogic.GameResource;
@@ -19,17 +19,19 @@ namespace Assets.Scripts.GameLogic.Enemy.AI.Behaviours
         [SerializeField] private Transform _spawnCenter;
         [SerializeField] private float _radius = 2;
 
-        [SerializeField] private PoolObjectTemplate _summonObjectTemplate;
         private IGameObjectPool _gameObjectPool;
+        private PhantomPoolObjectCollection _phantomPoolObjectCollection;
+
 
         [SerializeField] private float _cost = 10.0f;/*how much cost summon 1 character*/
 
         [SerializeField] private ResourceStorage _resourceStorage;
 
         [Inject]
-        private void Construct(IGameObjectPool pool)
+        private void Construct(IGameObjectPool pool, PhantomPoolObjectCollection phantomPoolObjectCollection)
         {
             _gameObjectPool = pool;
+            _phantomPoolObjectCollection = phantomPoolObjectCollection;
         }
 
         private void Start()
@@ -71,7 +73,9 @@ namespace Assets.Scripts.GameLogic.Enemy.AI.Behaviours
                 {
                     /*_summonObjectTemplate this must be prefab which include character and VFX for simplest
                      first working VFX then showing character, and after this character attack*/
-                    Poolable spawnedCharacter = _gameObjectPool.GetObject(_summonObjectTemplate.Id);
+                    string id = _phantomPoolObjectCollection.GetRandomPoolObject().Id;
+
+                    Poolable spawnedCharacter = _gameObjectPool.GetObject(id);
                     NPCActivationData npcActivationData = new NPCActivationData(point, _enemyGroup);
 
                     spawnedCharacter.Activate(npcActivationData);
