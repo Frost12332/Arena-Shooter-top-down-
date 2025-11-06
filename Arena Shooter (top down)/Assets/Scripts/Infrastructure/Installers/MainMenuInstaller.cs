@@ -1,4 +1,4 @@
-using Assets.Scripts.GameUI;
+using Assets.Scripts.GameUI.Menu;
 using UnityEngine;
 using Zenject;
 

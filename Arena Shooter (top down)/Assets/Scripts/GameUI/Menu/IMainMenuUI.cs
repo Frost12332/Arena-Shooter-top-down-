@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.GameUI
+﻿namespace Assets.Scripts.GameUI.Menu
 {
     public interface IMainMenuUI
     {

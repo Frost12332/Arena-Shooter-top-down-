@@ -4,7 +4,7 @@ using Assets.Scripts.Config.Pool.Price;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.GameEventBus;
 using Assets.Scripts.GameLogic.Services.PlayerInput;
-using Assets.Scripts.GameUI;
+using Assets.Scripts.GameUI.Game;
 using Assets.Scripts.Infrastructure.Factory;
 using Assets.Scripts.Infrastructure.ObjectPool;
 using UnityEngine;

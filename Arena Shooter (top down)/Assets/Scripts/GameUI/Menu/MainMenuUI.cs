@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.GameUI
+namespace Assets.Scripts.GameUI.Menu
 {
     public class MainMenuUI : MonoBehaviour, IMainMenuUI
     {

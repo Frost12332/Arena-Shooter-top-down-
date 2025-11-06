@@ -2,7 +2,7 @@ using Assets.Scripts.Infrastructure.SceneLoad;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.GameUI
+namespace Assets.Scripts.GameUI.Game
 {
     public class PauseMenuUI : MonoBehaviour, IPauseMenuUI
     {

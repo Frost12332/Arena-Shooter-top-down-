@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.GameUI
+namespace Assets.Scripts.GameUI.Game
 {
     public class ToolbarUI : MonoBehaviour, IToolbarUI
     {
