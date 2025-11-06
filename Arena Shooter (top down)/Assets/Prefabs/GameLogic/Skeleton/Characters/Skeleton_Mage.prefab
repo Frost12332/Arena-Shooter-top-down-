@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyGroup: {fileID: 403332108534608278}
-  _healVFX: {fileID: 11400000, guid: ff3b6017af102634d834d6bde145a81b, type: 2}
+  _healVFX: {fileID: 11400000, guid: d4fe244ef79b4c646b3fb41dc84ee4eb, type: 2}
   _maxTimeForHealing: 5
   _tickInterval: 0.25
   _healAmountInSeconds: 5
@@ -416,7 +416,6 @@ MonoBehaviour:
   _enemyGroup: {fileID: 403332108534608278}
   _spawnCenter: {fileID: 8933028626661220741}
   _radius: 3
-  _summonObjectTemplate: {fileID: 11400000, guid: a68b9c87fc030bb4bb0c9e6564ccb239, type: 2}
   _cost: 10
   _resourceStorage: {fileID: 4550612253803395210}
 --- !u!114 &2485758662701258321
@@ -441,11 +440,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9022311727758688951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc83a21ba5be86147a450f2ab74b2140, type: 3}
+  m_Script: {fileID: 11500000, guid: bfd45c1b206d306409bf0853344a76c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthPoints: 50
-  _maxHealthPoints: 100
+  _healthPoints: 0
+  _maxHealthPoints: 200
 --- !u!114 &5621580547834283574
 MonoBehaviour:
   m_ObjectHideFlags: 0

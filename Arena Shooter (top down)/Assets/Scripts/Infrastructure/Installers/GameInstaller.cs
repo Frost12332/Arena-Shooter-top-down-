@@ -1,7 +1,9 @@
 using Assets.Scripts.Config;
 using Assets.Scripts.Config.Pool;
+using Assets.Scripts.Config.Pool.Price;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.GameEventBus;
+using Assets.Scripts.GameLogic.Services.PlayerInput;
 using Assets.Scripts.GameUI;
 using Assets.Scripts.Infrastructure.Factory;
 using Assets.Scripts.Infrastructure.ObjectPool;
@@ -26,6 +28,8 @@ namespace Assets.Scripts.Infrastructure.Installers
         [SerializeField] private EnemyPoolObjectCollection _enemyPoolObjectCollection;
         [SerializeField] private PhantomPoolObjectCollection _phantomPoolObjectCollection;
 
+        [SerializeField] private PoolObjectCollectionPrice _poolObjectCollectionPrice;
+
 
 
 
@@ -43,6 +47,7 @@ namespace Assets.Scripts.Infrastructure.Installers
             Container.Bind<EnemyPoolObjectCollection>().FromInstance(_enemyPoolObjectCollection).AsSingle();
             Container.Bind<PhantomPoolObjectCollection>().FromInstance(_phantomPoolObjectCollection).AsSingle();
 
+            Container.Bind<PoolObjectCollectionPrice>().FromInstance(_poolObjectCollectionPrice).AsSingle();
 
 
             Container.Bind<IInputService>().To<StandaloneInputService>().FromNew().AsSingle();

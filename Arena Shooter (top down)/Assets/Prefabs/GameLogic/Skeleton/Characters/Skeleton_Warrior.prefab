@@ -157,10 +157,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4696839008333814605}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc83a21ba5be86147a450f2ab74b2140, type: 3}
+  m_Script: {fileID: 11500000, guid: bfd45c1b206d306409bf0853344a76c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthPoints: 100
+  _healthPoints: 0
   _maxHealthPoints: 100
 --- !u!114 &4688672421137823540
 MonoBehaviour:
@@ -177,6 +177,7 @@ MonoBehaviour:
   _agent: {fileID: 3141862245785404600}
   _enemyMember: {fileID: 8986318435948638448}
   _health: {fileID: 7627090859473493666}
+  _storages: []
 --- !u!114 &8986318435948638448
 MonoBehaviour:
   m_ObjectHideFlags: 0

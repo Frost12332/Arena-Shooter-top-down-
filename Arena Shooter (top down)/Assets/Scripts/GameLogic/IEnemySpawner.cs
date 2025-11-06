@@ -1,11 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Scripts.GameLogic
 {
     public interface IEnemySpawner
     {
-        void OnEnemyDied();
+        event Action AllEnemyDie;
+
         void SpawnWave(int waveSize);
-        bool TryFindValidSpawnPoint(out Vector3 spawnPoint);
+        
+        //void OnEnemyDied();
+        //bool TryFindValidSpawnPoint(out Vector3 spawnPoint);
     }
 }

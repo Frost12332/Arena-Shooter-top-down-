@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.GameLogic.AnimatorLogic.AnimatorContracts;
-using Assets.Scripts.GameLogic.FireballBehaviour;
 using Assets.Scripts.GameLogic.GameResource;
+using Assets.Scripts.GameLogic.Health;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -86,11 +86,11 @@ namespace Assets.Scripts.GameLogic.Enemy.AI.Behaviours
 
         private void ProcessHits(int hitAmount)
         {
-            Health health;
+            CharacterHealth health;
 
             for (int i = 0; i < hitAmount; i++)
             {
-                health = _hits[i].GetComponent<Health>();
+                health = _hits[i].GetComponent<CharacterHealth>();
 
                 health.TakeDamage(_attackDamage);
             }

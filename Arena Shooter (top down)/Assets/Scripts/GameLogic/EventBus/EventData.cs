@@ -27,4 +27,8 @@ namespace Assets.Scripts.GameLogic.GameEventBus
             _player = player;
         }
     }
+
+    public class PlayerDieEventData : EventData { }
+
+    public class EnemyDieEventData : EventData { }
 }

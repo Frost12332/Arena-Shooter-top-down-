@@ -1,3 +1,4 @@
+using Assets.Scripts.GameLogic.Health;
 using Assets.Scripts.Infrastructure.ObjectPool;
 using System;
 using UnityEngine;
@@ -43,7 +44,7 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
         {
             OnReleased?.Invoke();
 
-            Health health = other.GetComponent<Health>();
+            CharacterHealth health = other.GetComponent<CharacterHealth>();
 
             if (health != null)
                 health.TakeDamage(damage);

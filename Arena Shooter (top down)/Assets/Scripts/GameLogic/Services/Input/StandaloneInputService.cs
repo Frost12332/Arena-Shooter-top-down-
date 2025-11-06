@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.GameLogic
+namespace Assets.Scripts.GameLogic.Services.PlayerInput
 {
     public class StandaloneInputService : IInputService
     {
@@ -20,7 +20,7 @@ namespace Assets.Scripts.GameLogic
             Input.GetKeyDown(keyCode);
 
 
-        public Vector2 Movement() => 
+        public Vector2 Movement() =>
             new Vector2(Input.GetAxis(HorizontalAxisName), Input.GetAxis(VerticalAxisName));
 
         public Vector3 Rotation()

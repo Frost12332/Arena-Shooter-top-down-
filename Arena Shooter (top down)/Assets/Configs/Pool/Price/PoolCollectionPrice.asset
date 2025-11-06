@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00e1da7b03b78ef4eae15536e3ccddcf, type: 3}
-  m_Name: WaveConfig
+  m_Script: {fileID: 11500000, guid: f84887b0cbc378546a7501e01fb863f4, type: 3}
+  m_Name: PoolCollectionPrice
   m_EditorClassIdentifier: 
-  startWavePower: 25
-  wavePowerMultiplier: 1.2
+  _poolCollection:
+  - {fileID: 11400000, guid: df12d991aa1404b4dbcef5329b853779, type: 2}
+  - {fileID: 11400000, guid: ea712005247efd142aeedc7b271cf7b1, type: 2}

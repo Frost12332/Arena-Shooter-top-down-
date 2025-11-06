@@ -1,32 +1,31 @@
 ﻿using Assets.Scripts.GameLogic.AnimatorLogic.AnimatorContracts;
+using Assets.Scripts.GameLogic.GameEventBus;
 using Assets.Scripts.Infrastructure.ObjectPool;
 using System;
 using UnityEngine;
+using Zenject;
 
-namespace Assets.Scripts.GameLogic.FireballBehaviour
+namespace Assets.Scripts.GameLogic.Health
 {
-    public class Health : MonoBehaviour, IReleasable
+    public class CharacterHealth : MonoBehaviour
     {
         [SerializeField] protected int _healthPoints;
         [SerializeField] protected int _maxHealthPoints;
 
         private IHitAnimator _hitAnimator;
 
-        private bool _isAlive = true;
+        protected bool _isAlive = true;
+        protected IEventBus _eventBus;
 
-        public event Action OnReleased;
-
+        [Inject]
+        private void Construct(IEventBus eventBus)
+        {
+            _eventBus = eventBus;
+        }
 
         private void Start()
         {
             _hitAnimator = GetComponent<IHitAnimator>();
-        }
-
-
-        public void Arise()
-        {
-            _healthPoints = _maxHealthPoints;
-            _isAlive = true;
         }
 
         public void Healing(int healthPoints)
@@ -56,16 +55,10 @@ namespace Assets.Scripts.GameLogic.FireballBehaviour
         protected virtual void Die()
         {
             _isAlive = false;
-            OnReleased?.Invoke();
         }
 
 
         public bool IsNeedHealing() =>
             _healthPoints < _maxHealthPoints && _isAlive;
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            Debug.Log("Detect collision");
-        }
     }
 }

@@ -1,4 +1,5 @@
 using Assets.Scripts.GameLogic.GameEventBus;
+using Assets.Scripts.GameLogic.Services.PlayerInput;
 using UnityEngine;
 using Zenject;
 

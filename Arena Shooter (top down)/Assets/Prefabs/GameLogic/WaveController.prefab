@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431012bf0a1c39345ad0108fa5586070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startWavePower: 250
+  _wavePowerMultiplier: 1.2

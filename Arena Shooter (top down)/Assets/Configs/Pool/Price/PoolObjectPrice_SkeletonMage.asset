@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00e1da7b03b78ef4eae15536e3ccddcf, type: 3}
-  m_Name: WaveConfig
+  m_Script: {fileID: 11500000, guid: 9098026a6f4baba47acb076dda9b8178, type: 3}
+  m_Name: PoolObjectPrice_SkeletonMage
   m_EditorClassIdentifier: 
-  startWavePower: 25
-  wavePowerMultiplier: 1.2
+  _price: 60
+  _poolObjectTemplate: {fileID: 11400000, guid: 308ae121d9b3acb4da1e5ab0a13d8fbe, type: 2}

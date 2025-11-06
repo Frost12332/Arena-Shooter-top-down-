@@ -7,7 +7,7 @@ namespace Assets.Scripts.GameLogic.GameEventBus
     {
         private static class TypedEventBus<T> where T : EventData
         {
-            public static event Action<T> Handlers;
+            private static event Action<T> Handlers;
 
             public static void Publish(T eventData) => Handlers?.Invoke(eventData);
             public static void Subscribe(Action<T> handler) => Handlers += handler;

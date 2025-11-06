@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.GameLogic.Enemy.Group;
-using Assets.Scripts.GameLogic.FireballBehaviour;
 using Assets.Scripts.GameLogic.GameResource;
+using Assets.Scripts.GameLogic.Health;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,7 +11,7 @@ namespace Assets.Scripts.Infrastructure.ObjectPool
     {
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private EnemyMember _enemyMember;
-        [SerializeField] private Health _health;
+        [SerializeField] private EnemyHealth _health;
         [SerializeField] private List<ResourceStorage> _storages;
         
         private EnemyGroup _assignedGroup;

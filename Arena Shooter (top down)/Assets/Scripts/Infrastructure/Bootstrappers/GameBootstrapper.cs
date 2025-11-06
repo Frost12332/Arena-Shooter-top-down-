@@ -16,18 +16,5 @@ namespace Assets.Scripts.Infrastructure.Bootstrappers
         {
             _waveController.StartWaveController();
         }
-
-        //private IPauseMenuUI _pauseMenuUI;
-
-        //[Inject]
-        //private void Construct(IPauseMenuUI pauseMenuUI)
-        //{
-        //    _pauseMenuUI = pauseMenuUI;
-        //}
-
-        //private void Start()
-        //{
-        //    _pauseMenuUI.HidePauseMenu();
-        //}
     }
 }

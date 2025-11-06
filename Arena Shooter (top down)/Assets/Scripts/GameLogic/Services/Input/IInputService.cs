@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.GameLogic
+namespace Assets.Scripts.GameLogic.Services.PlayerInput
 {
     public interface IInputService
     {

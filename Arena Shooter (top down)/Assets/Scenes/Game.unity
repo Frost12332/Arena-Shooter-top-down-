@@ -1058,6 +1058,7 @@ MonoBehaviour:
   _poolObjectCollection: {fileID: 11400000, guid: ae8b127160831474b8051bff2b17724b, type: 2}
   _enemyPoolObjectCollection: {fileID: 11400000, guid: 9205f4d84b77c9547968d909c2331336, type: 2}
   _phantomPoolObjectCollection: {fileID: 11400000, guid: 64d40fcdad4ef1d45aced9ab38684545, type: 2}
+  _poolObjectCollectionPrice: {fileID: 11400000, guid: e18aa88a2d761074aa12ce0cf12597ae, type: 2}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
