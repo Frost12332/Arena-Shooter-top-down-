@@ -6,29 +6,29 @@ namespace Assets.Scripts.GameLogic.GameResource
     {
         [SerializeField] private ResourceType _resourceType;
 
-        [SerializeField] private float _maxCountMana = 100f;
-        [SerializeField] private float _currentMana;
+        [SerializeField] private float _currentCount;
+        [SerializeField] private float _maxCount = 100f;
 
         public ResourceType GetResourceType() =>
             _resourceType;
 
         public void Restore() =>
-            _currentMana = _maxCountMana;
+            _currentCount = _maxCount;
 
         public bool TrySpend(float amount)
         {
             if (HasEnough(amount))
             {
-                _currentMana -= amount;
+                _currentCount -= amount;
                 return true;
             }
             return false;
         }
 
         public void Add(float amount) =>
-            _currentMana = Mathf.Min(_maxCountMana, _currentMana + amount);
+            _currentCount = Mathf.Min(_maxCount, _currentCount + amount);
 
         public bool HasEnough(float amount) =>
-            _currentMana >= amount;
+            _currentCount >= amount;
     }
 }
